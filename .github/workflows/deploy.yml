@@ -1,0 +1,47 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 🚚 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: 🛠 Install LFTP and sshpass
+        run: sudo apt-get update && sudo apt-get install -y lftp sshpass
+
+      - name: 📤 Mirror to Server
+        env:
+          SSH_USER: ${{ secrets.FTP_USERNAME }}
+          SSH_PASS: ${{ secrets.FTP_PASSWORD }}
+          SSH_HOST: ${{ secrets.FTP_HOST }}
+          REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR != '' && secrets.FTP_REMOTE_DIR || '/httpdocs/' }}
+        run: |
+          export SSHPASS="$SSH_PASS"
+          lftp -u "$SSH_USER," "sftp://$SSH_HOST" << EOF
+          set sftp:auto-confirm yes
+          set sftp:connect-program "sshpass -e ssh -a -x -o StrictHostKeyChecking=no -o PreferredAuthentications=password"
+          set net:timeout 30
+          set net:max-retries 3
+          set net:reconnect-interval-base 5
+          mirror -R --verbose --delete --parallel=2 --ignore-time \
+            --exclude-glob .git/ \
+            --exclude-glob .github/ \
+            --exclude-glob node_modules/ \
+            --exclude-glob .env \
+            ./ $REMOTE_DIR
+          quit
+          EOF
+
+      - name: ✅ Deploy Başarılı
+        run: echo "🚀 Site başarıyla güncellendi!"
