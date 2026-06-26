@@ -4,44 +4,44 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
 
     steps:
-      - name: 🚚 Checkout
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          fetch-depth: 2
+          node-version: '22'
+          cache: 'npm'
 
-      - name: 🛠 Install LFTP and sshpass
-        run: sudo apt-get update && sudo apt-get install -y lftp sshpass
+      - name: Install dependencies
+        run: npm ci
 
-      - name: 📤 Mirror to Server
-        env:
-          SSH_USER: ${{ secrets.FTP_USERNAME }}
-          SSH_PASS: ${{ secrets.FTP_PASSWORD }}
-          SSH_HOST: ${{ secrets.FTP_HOST }}
-          REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR != '' && secrets.FTP_REMOTE_DIR || '/httpdocs/' }}
+      - name: Build
+        run: npm run build
+
+      - name: Deploy via SFTP
+        if: github.repository == 'Terapi-Medya/bondlio-astro-adem'
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ secrets.FTP_SERVER }}
+          port: 22
+          local_path: './dist/*'
+          remote_path: '/httpdocs'
+          sftp_only: true
+          delete_remote_files: false
+
+      - name: Verify CSS is live
+        if: github.repository == 'Terapi-Medya/bondlio-astro-adem'
         run: |
-          export SSHPASS="$SSH_PASS"
-          lftp -u "$SSH_USER," "sftp://$SSH_HOST" << EOF
-          set sftp:auto-confirm yes
-          set sftp:connect-program "sshpass -e ssh -a -x -o StrictHostKeyChecking=no -o PreferredAuthentications=password"
-          set net:timeout 30
-          set net:max-retries 3
-          set net:reconnect-interval-base 5
-          mirror -R --verbose --delete --parallel=2 --ignore-time \
-            --exclude-glob .git/ \
-            --exclude-glob .github/ \
-            --exclude-glob node_modules/ \
-            --exclude-glob .env \
-            ./ $REMOTE_DIR
-          quit
-          EOF
-
-      - name: ✅ Deploy Başarılı
-        run: echo "🚀 Site başarıyla güncellendi!"
+          css_path=$(curl -fsSL https://bondlio.com/ | grep -oE 'href="/_astro/[^"]+\.css"' | head -1 | sed 's/href="//;s/"//')
+          test -n "$css_path"
+          echo "Checking ${css_path}"
+          curl -fsSI "https://bondlio.com${css_path}"
