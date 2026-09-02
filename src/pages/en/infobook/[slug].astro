@@ -1,0 +1,101 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    const enPosts = posts.filter((post) => post.data.lang === "en");
+    return enPosts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }));
+}
+
+import { getLangContent } from "../../../i18n";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout
+    title={`${post.data.title} | Bondlio`}
+    description={post.data.description}
+    currentPage="infobook"
+>
+    <section class="page-content-container pt-20">
+        <div class="max-w-3xl mx-auto pb-8 border-b border-bondlio-beige">
+            <nav aria-label="Breadcrumb" class="text-xs text-bondlio-gray">
+                <a
+                    href="/en"
+                    class="hover:text-bondlio-orange transition-colors duration-150"
+                    >Home</a
+                >
+                <span class="mx-2">/</span>
+                <a
+                    href="/en/infobook"
+                    class="hover:text-bondlio-orange transition-colors duration-150"
+                    >InfoBook</a
+                >
+                <span class="mx-2">/</span>
+                <span class="text-bondlio-charcoal">{post.data.title}</span>
+            </nav>
+
+            <h1
+                class="mt-2 text-3xl md:text-4xl font-display font-semibold text-bondlio-charcoal"
+            >
+                {post.data.title}
+            </h1>
+        </div>
+    </section>
+
+    <article class="page-content-container py-10">
+        <div
+            class="prose prose-lg max-w-3xl mx-auto prose-headings:font-display prose-headings:text-bondlio-charcoal prose-p:text-bondlio-gray prose-strong:text-bondlio-charcoal prose-a:text-bondlio-orange"
+        >
+            <Content />
+        </div>
+    </article>
+
+    <section class="page-content-container pb-16">
+        <div
+            class="max-w-3xl mx-auto bg-bondlio-charcoal rounded-2xl px-8 py-12 text-center"
+        >
+            <h2 class="text-2xl font-display font-semibold text-white">
+                Have questions?
+            </h2>
+            <p class="mt-3 text-white/80">
+                Finding the right person can take time, but you're not alone.
+                The first step is just a message.
+            </p>
+            <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                    href={`https://wa.me/${content.contactInfo.whatsapp}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-whatsapp-green text-white font-display font-semibold rounded-lg hover:bg-whatsapp-green-dark transition-colors duration-150"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.38-.49.08-1.11.11-1.79-.11-.41-.13-.94-.31-1.62-.6-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.08 1-2.37.26-.28.57-.35.76-.35s.38 0 .55.01c.18.01.41-.07.64.49.24.57.81 1.98.88 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.45.12.61-.07.16-.19.68-.79.87-1.06.18-.28.36-.23.61-.14.24.09 1.55.73 1.82.87.27.14.44.21.51.32.07.11.07.65-.17 1.31z"
+                        ></path>
+                    </svg>
+                    Message on WhatsApp
+                </a>
+                <a
+                    href="/en/contact"
+                    class="inline-flex items-center justify-center px-6 py-3 bg-white text-bondlio-charcoal font-display font-semibold rounded-lg hover:bg-bondlio-beige transition-colors duration-150"
+                >
+                    Contact Form
+                </a>
+            </div>
+        </div>
+    </section>
+</Layout>

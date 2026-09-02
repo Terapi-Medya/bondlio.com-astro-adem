@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--color-bondlio-orange: #de7747;
+	--color-bondlio-darker-orange: #cd4a0f;
+	--color-bondlio-charcoal: #645c4f;
+	--color-bondlio-cream: #faf8f5;
+	--color-bondlio-gray: #8a8275;
+	--color-bondlio-beige: #f0ebe3;
+	--color-whatsapp-green: #25d366;
+	--color-whatsapp-green-dark: #1ebe59;
+
+	--font-display: "Poppins", sans-serif;
+	--font-body: "Raleway", sans-serif;
+}
+
+@utility page-content-container {
+	@apply px-6 py-10 max-w-[1440px] mx-auto;
+}

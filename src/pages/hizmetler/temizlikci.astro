@@ -1,0 +1,97 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import ServiceProcess from "../../components/ServiceProcess.astro";
+import ServiceCTA from "../../components/ServiceCTA.astro";
+import { getLangContent } from "../../i18n";
+
+import filipinliTenizlikci from "../../assets/filipinli-temizlikci.webp";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+
+const checks = [
+    {
+        title: "Sabıka Kaydı Kontrolü",
+        description: "Her adayın adli sicil kaydı titizlikle incelenir.",
+    },
+    {
+        title: "Referans Kontrolü",
+        description:
+            "Önceki işverenlerle doğrudan görüşerek geçmiş deneyimler doğrulanır.",
+    },
+    {
+        title: "Detaylı Mülakat",
+        description:
+            "Yüz yüze görüşmelerle adayın dikkati ve güvenilirliği değerlendirilir.",
+    },
+    {
+        title: "Deneyim Doğrulama",
+        description:
+            "İş geçmişi ve önceki çalışma alanları tek tek kontrol edilir.",
+    },
+    {
+        title: "Dürüstlük ve Güven Değerlendirmesi",
+        description: "Adayın önceki işverenleriyle güven ilişkisi sorgulanır.",
+    },
+];
+---
+
+<Layout
+    title="Temizlikçi Hizmeti | Bondlio"
+    description="Titizlikle seçilmiş, güvenilir temizlikçiler."
+    currentPage="services.cleaner"
+>
+    <PageHeader
+        title="Temizlikçi"
+        description="Ev ya da ofis — ihtiyacınıza en uygun düzende, titizlikle seçilmiş temizlikçiler."
+    />
+
+    <section class="page-content-container py-10">
+        <div class="grid lg:grid-cols-2 gap-25 items-center">
+            <div>
+                <h2
+                    class="text-2xl md:text-3xl font-display font-semibold text-bondlio-charcoal"
+                >
+                    Evinize ya da ofisinize giren kişiye güvenmelisiniz.
+                </h2>
+                <p class="mt-4 text-bondlio-gray text-lg">
+                    Bir temizlikçi aramıyorsunuz. Evinize, eşyalarınıza,
+                    ofisinizdeki mahremiyete güvenecek birini arıyorsunuz. <strong
+                        >Bunu biliyoruz</strong
+                    > — çünkü bu kararı hafifçe almadığınızı biliyoruz. Piyasada onlarca
+                    ajans var, hepsi "güvenilir" diyor. Biz bunu söylemek yerine,
+                    nasıl çalıştığımızı gösteriyoruz: <strong
+                        >her adayı sadece belgeleriyle değil,</strong
+                    > deneyimiyle, dikkatiyle, sizin alanınıza ne kadar özenli yaklaşacağıyla
+                    değerlendiriyoruz. Süreç boyunca sizi karanlıkta bırakmıyoruz;
+                    ücretlendirmemiz açık, iletişimimiz nettir. Çünkü biliyoruz ki;
+                    bu bir eşya değil, <strong>bir insan, ve bir mekan</strong> söz
+                    konusu.
+                </p>
+                <p class="mt-6 text-lg text-bondlio-gray">
+                    İster eviniz olsun, ister ofisiniz — düzenli temizlik, güven
+                    üzerine kuruludur. Bu yüzden adayları sadece iş
+                    geçmişleriyle değil, dikkatli çalışma alışkanlıklarıyla ve
+                    dürüstlükleriyle de değerlendiriyoruz. Size uygun
+                    temizlikçiyi bulmak için, standart bir mülakatın ötesinde,
+                    alanınızın ihtiyaçlarını ve beklentilerinizi anlamaya
+                    yönelik bir süreç uyguluyoruz.
+                </p>
+            </div>
+            <div
+                class="bg-bondlio-beige rounded-2xl aspect-[4/3] overflow-hidden"
+            >
+                <img
+                    src={filipinliTenizlikci.src}
+                    alt="Filipinli Temizlikçi güvenilir"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        </div>
+    </section>
+
+    <ServiceProcess checks={checks} />
+
+    <ServiceCTA />
+</Layout>

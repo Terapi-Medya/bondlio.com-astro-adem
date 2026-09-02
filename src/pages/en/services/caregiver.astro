@@ -1,0 +1,100 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import ServiceProcess from "../../../components/ServiceProcess.astro";
+import ServiceCTA from "../../../components/ServiceCTA.astro";
+import { getLangContent } from "../../../i18n";
+import filipinoCareGiver from "../../../assets/filipinli-yasli-bakici.webp";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+
+const checks = [
+    {
+        title: "Background Check",
+        description: "Every candidate's criminal record is carefully reviewed.",
+    },
+    {
+        title: "Reference Checks",
+        description:
+            "We speak directly with previous employers to verify past experience.",
+    },
+    {
+        title: "In-Depth Interview",
+        description:
+            "Face-to-face conversations help us assess a candidate's patience and approach.",
+    },
+    {
+        title: "Experience Verification",
+        description:
+            "Work history and prior caregiving experience are individually checked.",
+    },
+    {
+        title: "First Aid Training",
+        description:
+            "We look for foundational first aid knowledge and emergency awareness.",
+    },
+];
+---
+
+<Layout
+    title="Caregiver | Bondlio"
+    description="Carefully selected, trustworthy senior caregivers."
+    currentPage="services.caregiver"
+>
+    <PageHeader
+        title="Caregiver"
+        description="Full-time, live-in, or flexible — caregivers carefully selected to fit your family's needs."
+    />
+
+    <section class="page-content-container py-10">
+        <div class="grid lg:grid-cols-2 gap-25 items-center">
+            <div>
+                <h2
+                    class="text-2xl md:text-3xl font-display font-semibold text-bondlio-charcoal"
+                >
+                    Caring for an elderly family member requires patience and
+                    respect.
+                </h2>
+                <p class="mt-4 text-bondlio-gray text-lg">
+                    You're not just looking for a caregiver. You're looking for
+                    someone who will care for your mother, father, someone who
+                    has always been there for you, with the same value they
+                    deserve.
+                    <strong>We understand this</strong> — because we understand that
+                    this is not a decision taken lightly. There are dozens of agencies
+                    out there, and they all say "experienced." We prefer to show how
+                    we work: <strong>we evaluate every candidate</strong> not just
+                    by their documents, but by their patience, approach, and how well
+                    they will fit into your family. We don't leave you in the dark
+                    during the process; our pricing is transparent, our communication
+                    is clear. Because we know: this is not about an object, <strong
+                        >this is about a person, and a family.</strong
+                    >
+                </p>
+                <p class="mt-6 text-lg text-bondlio-gray">
+                    Caring for an elderly family member goes beyond daily
+                    routines. It requires patience, the right communication
+                    style, and the ability to show genuine empathy. We don't
+                    just look at a caregiver's work history; we look at who they
+                    are as a person. To find the right fit for your family, we
+                    go beyond standard interviews — we work to understand your
+                    daily rhythm and your specific expectations.
+                </p>
+            </div>
+            <div
+                class="bg-bondlio-beige rounded-2xl aspect-[4/3] flex items-center justify-center"
+            >
+                <img
+                    src={filipinoCareGiver.src}
+                    alt="Filipino Nanny"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        </div>
+    </section>
+
+    <ServiceProcess checks={checks} />
+
+    <ServiceCTA />
+</Layout>

@@ -1,0 +1,106 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import ServiceProcess from "../../../components/ServiceProcess.astro";
+import ServiceCTA from "../../../components/ServiceCTA.astro";
+import { getLangContent } from "../../../i18n";
+import filipinoCareGiver from "../../../assets/filipinli-yasli-bakici.webp";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+
+const checks = [
+    {
+        title: "Pagsusuri ng Kaligiran",
+        description:
+            "Maingat naming sinusuri ang tala ng krimen ng bawat kandidato.",
+    },
+    {
+        title: "Pagsusuri ng mga Reputasyon",
+        description:
+            "Direkta kaming nakikipag-usap sa mga dating employer upang kumpirmahin ang nakaraang karanasan.",
+    },
+    {
+        title: "Masusing Panayam",
+        description:
+            "Makakatulong ang face-to-face na pakikipag-usap sa pagtatasa ng pasensya at diskarte ng kandidato.",
+    },
+    {
+        title: "Pagpapatunay ng Karanasan",
+        description:
+            "Sinusuri nang paisa-isa ang kasaysayan ng trabaho at nakaraang karanasan sa pag-aalaga.",
+    },
+    {
+        title: "Pagsasanay sa First Aid",
+        description:
+            "Hinahanap namin ang mga pangunahing kaalaman sa first aid at kamalayan sa mga emergency.",
+    },
+];
+---
+
+<Layout
+    title="Tagapag-alaga | Bondlio"
+    description="Carefully selected, trustworthy senior caregivers."
+    currentPage="services.caregiver"
+>
+    <PageHeader
+        title="Tagapag-alaga"
+        description="Full-time, live-in, or flexible — caregivers carefully selected to fit your family's needs."
+    />
+
+    <section class="page-content-container py-10">
+        <div class="grid lg:grid-cols-2 gap-25 items-center">
+            <div>
+                <h2
+                    class="text-2xl md:text-3xl font-display font-semibold text-bondlio-charcoal"
+                >
+                    Ang pag-aalaga para sa isang matandang miyembro ng pamilya
+                    ay nangangailangan ng pasensya at paggalang.
+                </h2>
+                <p class="mt-4 text-bondlio-gray text-lg">
+                    Hindi ka lang basta naghahanap ng tagapag-alaga. Naghahanap
+                    ka ng isang taong mag-aalaga sa iyong ina, ama, isang taong
+                    laging nandiyan para sa iyo, na may parehong halaga na
+                    nararapat sa kanila. Nauunawaan namin ito — dahil nauunawaan
+                    namin na hindi ito isang desisyong basta-basta na lang
+                    ginagawa. Mayroong dose-dosenang mga ahensya diyan, at lahat
+                    sila ay nagsasabing "may karanasan." Mas gusto naming
+                    ipakita kung paano kami nagtatrabaho: sinusuri namin ang
+                    bawat kandidato hindi lamang sa pamamagitan ng kanilang mga
+                    dokumento, kundi sa pamamagitan ng kanilang pasensya,
+                    diskarte, at kung gaano sila kaangkop sa iyong pamilya.
+                    Hindi ka namin iniiwan sa dilim habang isinasagawa ang
+                    proseso; ang aming pagpepresyo ay transparent, ang aming
+                    komunikasyon ay malinaw. Dahil alam namin: hindi ito tungkol
+                    sa isang bagay, ito ay tungkol sa isang tao, at isang
+                    pamilya.
+                </p>
+                <p class="mt-6 text-lg text-bondlio-gray">
+                    Ang pag-aalaga sa isang matandang miyembro ng pamilya ay
+                    higit pa sa pang-araw-araw na gawain. Nangangailangan ito ng
+                    pasensya, tamang istilo ng komunikasyon, at kakayahang
+                    magpakita ng tunay na empatiya. Hindi lamang namin
+                    tinitingnan ang kasaysayan ng trabaho ng isang
+                    tagapag-alaga; tinitingnan namin kung sino sila bilang isang
+                    tao. Upang mahanap ang tamang akma para sa iyong pamilya,
+                    higit pa kami sa mga karaniwang panayam — sinisikap naming
+                    maunawaan ang iyong pang-araw-araw na ritmo at ang iyong mga
+                    partikular na inaasahan.
+                </p>
+            </div>
+            <div
+                class="bg-bondlio-beige rounded-2xl aspect-[4/3] flex items-center justify-center"
+            >
+                <img
+                    src={filipinoCareGiver.src}
+                    alt="Filipino Nanny"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        </div>
+    </section>
+
+    <ServiceProcess checks={checks} />
+
+    <ServiceCTA />
+</Layout>

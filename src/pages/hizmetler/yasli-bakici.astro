@@ -1,0 +1,98 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import ServiceProcess from "../../components/ServiceProcess.astro";
+import ServiceCTA from "../../components/ServiceCTA.astro";
+import { getLangContent } from "../../i18n";
+
+import filipinliYasliBakici from "../../assets/filipinli-yasli-bakici.webp";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+
+const checks = [
+    {
+        title: "Sabıka Kaydı Kontrolü",
+        description: "Her adayın adli sicil kaydı titizlikle incelenir.",
+    },
+    {
+        title: "Referans Kontrolü",
+        description:
+            "Önceki işverenlerle doğrudan görüşerek geçmiş deneyimler doğrulanır.",
+    },
+    {
+        title: "Detaylı Mülakat",
+        description:
+            "Yüz yüze görüşmelerle adayın sabrı ve yaklaşımı değerlendirilir.",
+    },
+    {
+        title: "Deneyim Doğrulama",
+        description:
+            "İş geçmişi ve önceki bakım deneyimleri tek tek kontrol edilir.",
+    },
+    {
+        title: "İlk Yardım Eğitimi",
+        description:
+            "Temel ilk yardım bilgisi ve acil durum farkındalığı aranır.",
+    },
+];
+---
+
+<Layout
+    title="Yaşlı Bakıcı Hizmeti | Bondlio"
+    description="Titizlikle seçilmiş, güvenilir yaşlı bakıcıları."
+    currentPage="services.caregiver"
+>
+    <PageHeader
+        title="Yaşlı Bakıcı"
+        description="Tam zamanlı, yatılı ya da esnek — ailenize en uygun düzende, titizlikle seçilmiş yaşlı bakıcıları."
+    />
+
+    <section class="page-content-container py-10">
+        <div class="grid lg:grid-cols-2 gap-25 items-center">
+            <div>
+                <h2
+                    class="text-2xl md:text-3xl font-display font-semibold text-bondlio-charcoal"
+                >
+                    Yaşlı bir aile büyüğüne bakmak, sabır ve saygı ister.
+                </h2>
+                <p class="mt-4 text-bondlio-gray text-lg">
+                    Bir yaşlı bakıcısı aramıyorsunuz. Annenize, babanıza,
+                    hayatınızda hep var olan birine, artık kendisi kadar değer
+                    verecek birini arıyorsunuz. <strong>Bunu biliyoruz</strong> —
+                    çünkü bu kararı hafifçe almadığınızı biliyoruz. Piyasada onlarca
+                    ajans var, hepsi "deneyimli" diyor. Biz bunu söylemek yerine,
+                    nasıl çalıştığımızı gösteriyoruz: <strong
+                        >her adayı sadece belgeleriyle değil,</strong
+                    > sabrıyla, yaklaşımıyla, sizin ailenize ne kadar uyumlu olacağıyla
+                    değerlendiriyoruz. Süreç boyunca sizi karanlıkta bırakmıyoruz;
+                    ücretlendirmemiz açık, iletişimimiz nettir. Çünkü biliyoruz ki;
+                    bu bir eşya değil, <strong>bir insan, ve bir aile</strong> söz
+                    konusu.
+                </p>
+                <p class="mt-6 text-lg text-bondlio-gray">
+                    Yaşlı bir bireye bakmak, günlük rutinlerin çok ötesinde bir
+                    ilişkidir. Bu yüzden adayları sadece iş geçmişleriyle değil,
+                    sabırlarıyla, iletişim tarzlarıyla ve empati kurma
+                    biçimleriyle de değerlendiriyoruz. Aileden biri olacak
+                    kişiyi bulmak için, standart bir mülakatın ötesinde,
+                    ailenizin günlük düzenini ve beklentilerini anlamaya yönelik
+                    bir süreç uyguluyoruz.
+                </p>
+            </div>
+            <div
+                class="bg-bondlio-beige rounded-2xl aspect-[4/3] overflow-hidden"
+            >
+                <img
+                    src={filipinliYasliBakici.src}
+                    alt="Filipinli Yaşlı Bakıcı güvenilir"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        </div>
+    </section>
+
+    <ServiceProcess checks={checks} />
+
+    <ServiceCTA />
+</Layout>

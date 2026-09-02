@@ -1,0 +1,103 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import ServiceProcess from "../../../components/ServiceProcess.astro";
+import ServiceCTA from "../../../components/ServiceCTA.astro";
+import { getLangContent } from "../../../i18n";
+import filipinoCleaner from "../../../assets/filipinli-temizlikci.webp";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+
+const checks = [
+    {
+        title: "Pagsusuri ng Rekord ng Kriminal",
+        description:
+            "Maingat na sinusuri ang kriminal na rekord ng bawat kandidato.",
+    },
+    {
+        title: "Pagsusuri ng Reference",
+        description:
+            "Direktang kinokontak ang mga dating employer para patunayan ang mga nakaraang karanasan.",
+    },
+    {
+        title: "Masusing Panayam",
+        description:
+            "Isinasagawa ang mga harapang panayam upang suriin ang atensyon sa detalye at pagiging maaasahan ng kandidato.",
+    },
+    {
+        title: "Pagsusuri ng Karanasan",
+        description:
+            "Isa-isang sinusuri ang kasaysayan ng trabaho at mga nakaraang pinagtrabahuhan.",
+    },
+    {
+        title: "Pagtatasa sa Katapatan at Tiwala",
+        description:
+            "Tinatanong ang relasyon ng kandidato sa mga dating employer.",
+    },
+];
+---
+
+<Layout
+    title="Serbisyo sa Paglilinis | Bondlio"
+    description="Carefully selected, trustworthy cleaners."
+    currentPage="services.cleaner"
+>
+    <PageHeader
+        title="Tagalinis"
+        description="Tahanan man o opisina—mga tagalinis na maingat na pinili para sa eksaktong pangangailangan mo."
+    />
+
+    <section class="page-content-container py-10">
+        <div class="grid lg:grid-cols-2 gap-25 items-center">
+            <div>
+                <h2
+                    class="text-2xl md:text-3xl font-display font-semibold text-bondlio-charcoal"
+                >
+                    Dapat mong pagkatiwalaan ang taong papasok sa iyong bahay o
+                    opisina.
+                </h2>
+                <p class="mt-4 text-bondlio-gray text-lg">
+                    Hindi ka lang basta tagalinis ang hinahanap mo. Naghahanap
+                    ka ng taong mapagkakatiwalaan mo sa iyong tahanan, sa iyong
+                    mga gamit, at sa privacy ng iyong opisina. Alam namin ito —
+                    at alam naming hindi mo basta-basta ginagawa ang desisyong
+                    ito. Mayroong dose-dosenang mga ahensya diyan, lahat ay
+                    nagsasabing sila ay "mapagkakatiwalaan." Mas gusto naming
+                    ipakita ito: sinusuri namin ang bawat kandidato hindi lamang
+                    sa kanilang mga dokumento, kundi pati na rin sa kanilang
+                    atensyon sa detalye, sa kanilang pagiging masinsinan, at
+                    kung gaano sila kaingat na lapitan ang iyong espasyo.
+                    Pinapanatili ka naming may impormasyon sa buong proseso; ang
+                    aming mga bayarin ay transparent, ang aming komunikasyon ay
+                    malinaw. Dahil alam naming hindi lamang ito tungkol sa isang
+                    bagay — ito ay tungkol sa isang tao, at isang lugar.
+                </p>
+                <p class="mt-6 text-lg text-bondlio-gray">
+                    Mapa-bahay mo man o opisina, ang regular na paglilinis ay
+                    nakasalalay sa tiwala. Kaya naman hindi lang namin
+                    tinitingnan ang mga karanasan sa trabaho ng mga kandidato;
+                    sinusuri rin namin ang kanilang maingat na mga gawi sa
+                    trabaho at ang kanilang integridad. Upang mahanap ang tamang
+                    tagalinis para sa iyo, higit pa sa isang karaniwang panayam
+                    ang aming ginagawa, at naglalapat kami ng isang prosesong
+                    idinisenyo upang maunawaan ang mga partikular na
+                    pangangailangan at inaasahan ng iyong espasyo.
+                </p>
+            </div>
+            <div
+                class="bg-bondlio-beige rounded-2xl aspect-[4/3] flex items-center justify-center"
+            >
+                <img
+                    src={filipinoCleaner.src}
+                    alt="Filipino Nanny"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        </div>
+    </section>
+
+    <ServiceProcess checks={checks} />
+
+    <ServiceCTA />
+</Layout>

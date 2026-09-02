@@ -1,0 +1,48 @@
+---
+import { getLangContent } from "../i18n";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+---
+
+<section
+    class="relative isolate px-6 py-24 md:py-36 bg-bondlio-cream overflow-hidden"
+>
+    <div
+        aria-hidden="true"
+        class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-60"
+    >
+        <div
+            style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
+            class="relative left-1/2 aspect-[1155/678] w-[36rem] -translate-x-1/2 bg-gradient-to-tr from-bondlio-orange to-bondlio-beige opacity-40 sm:w-[72rem]"
+        >
+        </div>
+    </div>
+
+    <div class="mx-auto max-w-3xl text-center">
+        <h1
+            class="text-3xl md:text-5xl font-display font-bold text-bondlio-charcoal leading-tight text-balance"
+        >
+            {content.homepage.heroTitle}
+        </h1>
+        <p
+            class="mt-6 text-lg md:text-xl text-bondlio-gray text-pretty max-w-2xl mx-auto"
+        >
+            {content.homepage.heroSubtitle}
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-4">
+            <a
+                href={content.routes.contact}
+                class="px-6 py-3 bg-bondlio-orange text-white font-display font-semibold rounded-lg hover:bg-bondlio-charcoal transition-colors duration-150"
+            >
+                {content.homepage.heroCtaText}
+            </a>
+            <a
+                href={content.routes.services.index}
+                class="px-6 py-3 text-bondlio-charcoal font-display font-semibold hover:text-bondlio-orange transition-colors duration-150"
+            >
+                {content.nav.services} →
+            </a>
+        </div>
+    </div>
+</section>

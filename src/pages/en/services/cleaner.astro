@@ -1,0 +1,97 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import ServiceProcess from "../../../components/ServiceProcess.astro";
+import ServiceCTA from "../../../components/ServiceCTA.astro";
+import { getLangContent } from "../../../i18n";
+import filipinoCleaner from "../../../assets/filipinli-temizlikci.webp";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+
+const checks = [
+    {
+        title: "Criminal Record Check",
+        description: "Every candidate's criminal record is carefully checked.",
+    },
+    {
+        title: "Reference Check",
+        description:
+            "Previous employers are contacted directly to verify past experiences.",
+    },
+    {
+        title: "Detailed Interview",
+        description:
+            "Face-to-face interviews are conducted to evaluate the candidate's attention to detail and reliability.",
+    },
+    {
+        title: "Experience Verification",
+        description:
+            "Work history and previous workplaces are checked one by one.",
+    },
+    {
+        title: "Honesty and Trust Evaluation",
+        description:
+            "The candidate's trust relationship with previous employers is questioned.",
+    },
+];
+---
+
+<Layout
+    title="Cleaner Service | Bondlio"
+    description="Carefully selected, trustworthy cleaners."
+    currentPage="services.cleaner"
+>
+    <PageHeader
+        title="Cleaner"
+        description="Home or office — carefully selected cleaners in the exact format you need."
+    />
+
+    <section class="page-content-container py-10">
+        <div class="grid lg:grid-cols-2 gap-25 items-center">
+            <div>
+                <h2
+                    class="text-2xl md:text-3xl font-display font-semibold text-bondlio-charcoal"
+                >
+                    You must trust the person entering your home or office.
+                </h2>
+                <p class="mt-4 text-bondlio-gray text-lg">
+                    You’re not just looking for a cleaner. You’re looking for
+                    someone you can trust with your home, your belongings, the
+                    privacy of your office. <strong>We know this</strong> — and we
+                    know you’re not taking this decision lightly. There are dozens
+                    of agencies out there, all saying they’re “trustworthy.” We prefer
+                    to show it: we evaluate every candidate not just on their documents,
+                    but on their attention to detail, their conscientiousness, and
+                    how carefully they’ll approach your space. We keep you informed
+                    throughout the process; our fees are transparent, our communication
+                    is clear. Because we know this isn’t just about an object — <strong
+                        >it’s about a person, and a place</strong
+                    >.
+                </p>
+                <p class="mt-6 text-lg text-bondlio-gray">
+                    Whether it’s your home or your office, regular cleaning
+                    depends on trust. That’s why we don’t just look at
+                    candidates’ work histories; we also assess their careful
+                    work habits and their integrity. To find the right cleaner
+                    for you, we go beyond a standard interview, applying a
+                    process designed to understand the specific needs and
+                    expectations of your space.
+                </p>
+            </div>
+            <div
+                class="bg-bondlio-beige rounded-2xl aspect-[4/3] flex items-center justify-center"
+            >
+                <img
+                    src={filipinoCleaner.src}
+                    alt="Filipino Nanny"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        </div>
+    </section>
+
+    <ServiceProcess checks={checks} />
+
+    <ServiceCTA />
+</Layout>

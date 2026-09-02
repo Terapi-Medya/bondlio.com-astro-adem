@@ -1,0 +1,98 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import ServiceProcess from "../../../components/ServiceProcess.astro";
+import ServiceCTA from "../../../components/ServiceCTA.astro";
+import { getLangContent } from "../../../i18n";
+import filipinoNanny from "../../../assets/filipinli-cocuk-bakicisi.webp";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+
+const checks = [
+    {
+        title: "Background Check",
+        description: "Every candidate's criminal record is carefully reviewed.",
+    },
+    {
+        title: "Reference Checks",
+        description:
+            "We speak directly with previous employers to verify past experience.",
+    },
+    {
+        title: "In-Depth Interview",
+        description:
+            "Face-to-face conversations help us assess a candidate's approach and fit.",
+    },
+    {
+        title: "Experience & Certification Verification",
+        description: "Documents and work history are individually checked.",
+    },
+    {
+        title: "First Aid & Childcare Training",
+        description:
+            "We look for foundational childcare and first-aid knowledge.",
+    },
+];
+---
+
+<Layout
+    title="Nanny Services | Bondlio"
+    description="Carefully selected, trustworthy nannies."
+    currentPage="services.nanny"
+>
+    <PageHeader
+        title="Nanny"
+        description="Full-time, live-in, or flexible — carefully selected nannies in the arrangement that best fits your family."
+    />
+
+    <section class="page-content-container py-10">
+        <div class="grid lg:grid-cols-2 gap-25 items-center">
+            <div>
+                <h2
+                    class="text-2xl md:text-3xl font-display font-semibold text-bondlio-charcoal"
+                >
+                    This isn't just hiring someone.
+                </h2>
+                <p class="mt-4 text-bondlio-gray text-lg">
+                    You're not just looking for a nanny. You're inviting someone
+                    into your home, into your child's life, into the routine you
+                    trust. <strong>We know that</strong> — because we know you're
+                    not taking this decision lightly. There are dozens of agencies
+                    out there, and every one of them says "trust us." <strong
+                        >We'd rather show you how we actually work:</strong
+                    > we evaluate every candidate not just by their documents, but
+                    by their experience, their approach, and how well they'll truly
+                    fit with your family. We don't leave you in the dark along the
+                    way; our pricing is clear, our communication is honest. Because
+                    we know — <strong
+                        >this isn't a transaction. It's a person, and a family.</strong
+                    >
+                </p>
+                <p class="mt-6 text-lg text-bondlio-gray">
+                    One of the most important things for a family is finding a
+                    nanny who isn't just trustworthy, but who genuinely fits
+                    their way of life. That's why we evaluate candidates not
+                    only by their past experience, but by their personal
+                    character and cultural values. To find someone who'll truly
+                    become part of your family, we go beyond a standard
+                    interview — we take the time to understand your daily
+                    routines and what matters most to you.
+                </p>
+            </div>
+            <div
+                class="bg-bondlio-beige rounded-2xl aspect-[4/3] flex items-center justify-center"
+            >
+                <img
+                    src={filipinoNanny.src}
+                    alt="Filipino Nanny"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        </div>
+    </section>
+
+    <ServiceProcess checks={checks} />
+
+    <ServiceCTA />
+</Layout>

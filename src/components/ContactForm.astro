@@ -1,0 +1,92 @@
+---
+import { getLangContent } from "../i18n";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+---
+
+<form
+    action="https://submit-form.com/km3h27w3s"
+    method="POST"
+    class="grid grid-cols-1 gap-6 sm:grid-cols-2 p-10 rounded-2xl border border-bondlio-beige bg-white"
+>
+    <input
+        type="checkbox"
+        name="_honeypot"
+        style="display:none"
+        tabindex="-1"
+        autocomplete="off"
+    />
+
+    <div class="sm:col-span-2">
+        <label
+            for="name"
+            class="block text-sm font-display font-medium text-bondlio-charcoal"
+        >
+            {content.contactForm.nameLabel}
+        </label>
+        <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="mt-2 w-full rounded-lg border border-bondlio-beige px-4 py-3 text-bondlio-charcoal focus:outline-none focus:ring-2 focus:ring-bondlio-orange"
+        />
+    </div>
+
+    <div>
+        <label
+            for="email"
+            class="block text-sm font-display font-medium text-bondlio-charcoal"
+        >
+            {content.contactForm.emailLabel}
+        </label>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="mt-2 w-full rounded-lg border border-bondlio-beige px-4 py-3 text-bondlio-charcoal focus:outline-none focus:ring-2 focus:ring-bondlio-orange"
+        />
+    </div>
+
+    <div>
+        <label
+            for="phone"
+            class="block text-sm font-display font-medium text-bondlio-charcoal"
+        >
+            {content.contactForm.phoneLabel}
+        </label>
+        <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="mt-2 w-full rounded-lg border border-bondlio-beige px-4 py-3 text-bondlio-charcoal focus:outline-none focus:ring-2 focus:ring-bondlio-orange"
+        />
+    </div>
+
+    <div class="sm:col-span-2">
+        <label
+            for="message"
+            class="block text-sm font-display font-medium text-bondlio-charcoal"
+        >
+            {content.contactForm.messageLabel}
+        </label>
+        <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="mt-2 w-full resize-none rounded-lg border border-bondlio-beige px-4 py-3 text-bondlio-charcoal focus:outline-none focus:ring-2 focus:ring-bondlio-orange"
+        ></textarea>
+    </div>
+
+    <div class="sm:col-span-2">
+        <button
+            type="submit"
+            class="w-full sm:w-auto px-8 py-3 bg-bondlio-orange text-white font-display font-semibold rounded-lg hover:bg-bondlio-charcoal transition-colors duration-150"
+        >
+            {content.contactForm.submitButton}
+        </button>
+    </div>
+</form>

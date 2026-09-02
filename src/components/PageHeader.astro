@@ -1,0 +1,35 @@
+---
+import { getLangContent } from "../i18n";
+
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+---
+
+<section class="page-content-container pt-20">
+    <nav aria-label="Breadcrumb" class="text-xs text-bondlio-gray">
+        <a
+            href={content.routes.home}
+            class="hover:text-bondlio-orange transition-colors duration-150"
+        >
+            {content.nav.home}
+        </a>
+        <span class="mx-2">/</span>
+        <span class="text-bondlio-charcoal">{title}</span>
+    </nav>
+
+    <h1
+        class="mt-2 text-4xl md:text-5xl font-display font-semibold text-bondlio-charcoal"
+    >
+        {title}
+    </h1>
+    <p class="mt-2 text-md md:text-xl text-bondlio-gray max-w-3xl">
+        {description}
+    </p>
+</section>

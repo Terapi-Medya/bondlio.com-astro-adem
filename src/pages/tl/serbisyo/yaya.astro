@@ -1,0 +1,105 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import ServiceProcess from "../../../components/ServiceProcess.astro";
+import ServiceCTA from "../../../components/ServiceCTA.astro";
+import { getLangContent } from "../../../i18n";
+import filipinoNanny from "../../../assets/filipinli-cocuk-bakicisi.webp";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+
+const checks = [
+    {
+        title: "Pagsusuri sa Kaligiran",
+        description:
+            "Maingat na sinusuri ang kriminal na rekord ng bawat kandidato.",
+    },
+    {
+        title: "Pagsusuri ng mga Sanggunian",
+        description:
+            "Direktang nakikipag-usap kami sa mga dating employer upang beripikahin ang nakaraang karanasan.",
+    },
+    {
+        title: "Masusing Panayam",
+        description:
+            "Ang mga face-to-face na pakikipag-usap ay tumutulong sa amin na masuri ang diskarte at pagkaangkop ng kandidato.",
+    },
+    {
+        title: "Beripikasyon ng Karanasan at Sertipikasyon",
+        description:
+            "Ang mga dokumento at kasaysayan ng trabaho ay indibidwal na sinusuri.",
+    },
+    {
+        title: "Pagsasanay sa First Aid at Pangangalaga ng Bata",
+        description:
+            "Naghahanap kami ng pundasyong kaalaman sa pangangalaga ng bata at first aid.",
+    },
+];
+---
+
+<Layout
+    title="Mga Serbisyo ng Yaya | Bondlio"
+    description="Maingat na pinili at mapagkakatiwalaang mga yaya."
+    currentPage="services.nanny"
+>
+    <PageHeader
+        title="Yaya"
+        description="Full-time, nakatira kasama ang pamilya, o flexible — mga maingat na piling yaya sa ayos na pinakaangkop sa iyong pamilya."
+    />
+
+    <section class="page-content-container py-10">
+        <div class="grid lg:grid-cols-2 gap-25 items-center">
+            <div>
+                <h2
+                    class="text-2xl md:text-3xl font-display font-semibold text-bondlio-charcoal"
+                >
+                    Hindi lang ito basta pagkuha ng isang tao.
+                </h2>
+                <p class="mt-4 text-bondlio-gray text-lg">
+                    Hindi ka lang basta naghahanap ng yaya. Nag-iimbita ka ng
+                    isang tao sa iyong tahanan, sa buhay ng iyong anak, sa
+                    rutinang pinagkakatiwalaan mo. Alam namin iyan — dahil alam
+                    naming hindi mo basta-basta ginagawa ang desisyong ito.
+                    Mayroong dose-dosenang mga ahensya diyan, at bawat isa sa
+                    kanila ay nagsasabing "magtiwala ka sa amin." Mas gugustuhin
+                    naming ipakita sa iyo kung paano talaga kami nagtatrabaho:
+                    sinusuri namin ang bawat kandidato hindi lamang sa
+                    pamamagitan ng kanilang mga dokumento, kundi pati na rin sa
+                    kanilang karanasan, kanilang pamamaraan, at kung gaano sila
+                    tunay na babagay sa iyong pamilya. Hindi ka namin iniiwan sa
+                    dilim habang ginagawa mo ang proseso; malinaw ang aming
+                    pagpepresyo, tapat ang aming komunikasyon. Dahil alam namin
+                    — hindi ito isang transaksyon. Ito ay isang tao, at isang
+                    pamilya.
+                </p>
+                <p class="mt-6 text-lg text-bondlio-gray">
+                    Isa sa mga pinakamahalagang bagay para sa isang pamilya ay
+                    ang paghahanap ng isang yaya na hindi lamang
+                    mapagkakatiwalaan, ngunit talagang umaangkop sa kanilang
+                    paraan ng pamumuhay. Iyon ang dahilan kung bakit sinusuri
+                    namin ang mga kandidato hindi lamang sa pamamagitan ng
+                    kanilang nakaraang karanasan, ngunit sa pamamagitan ng
+                    kanilang personal na katangian at kultural na halaga. Upang
+                    makahanap ng isang taong tunay na magiging bahagi ng iyong
+                    pamilya, lumampas kami sa karaniwang panayam — naglalaan
+                    kami ng oras upang maunawaan ang iyong mga pang-araw-araw na
+                    gawain at kung ano ang pinakamahalaga sa iyo.
+                </p>
+            </div>
+            <div
+                class="bg-bondlio-beige rounded-2xl aspect-[4/3] flex items-center justify-center"
+            >
+                <img
+                    src={filipinoNanny.src}
+                    alt="Filipino Nanny"
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        </div>
+    </section>
+
+    <ServiceProcess checks={checks} />
+
+    <ServiceCTA />
+</Layout>

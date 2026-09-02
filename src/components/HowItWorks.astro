@@ -1,0 +1,35 @@
+---
+import { getLangContent } from "../i18n";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+---
+
+<section class="page-content-container py-16">
+    <div class="max-w-2xl">
+        <h2 class="text-4xl font-display font-semibold text-bondlio-charcoal">
+            {content.homepage.howItWorksTitle}
+        </h2>
+        <p class="mt-3 text-bondlio-gray">
+            {content.homepage.howItWorksSubtitle}
+        </p>
+    </div>
+
+    <div class="mt-7 grid md:grid-cols-4 gap-6">
+        {
+            content.homepage.steps.map((step) => (
+                <div class="bg-white border border-bondlio-beige rounded-2xl p-6">
+                    <span class="text-3xl font-display font-extrabold text-bondlio-orange">
+                        {step.number}
+                    </span>
+                    <h3 class="mt-3 font-display font-semibold text-bondlio-charcoal">
+                        {step.title}
+                    </h3>
+                    <p class="mt-2 text-sm text-bondlio-gray">
+                        {step.description}
+                    </p>
+                </div>
+            ))
+        }
+    </div>
+</section>
