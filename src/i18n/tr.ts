@@ -57,7 +57,7 @@ export const tr: Translation = {
             },
             {
                 number: "04",
-                title: "Yanınızdayız",
+                title: "Takip ve Kontrol",
                 description: "Eşleşme sonrası da sürecin içindeyiz — bir sorun olursa, çözmek için buradayız.",
             },
         ],
