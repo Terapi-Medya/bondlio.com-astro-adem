@@ -73,7 +73,7 @@ export const tr: Translation = {
         values: [
             {
                 title: "Titiz Değerlendirme",
-                description: "Her aday, hem aile hem çalışan tarafında dikkatle incelenir. Kısayol yok, sadece güven.",
+                description: "Her aday, hem aile hem çalışan tarafında dikkatle incelenir. Kısayol yok, sadece güven var.",
                 icon: "check-shield",
             },
             {
