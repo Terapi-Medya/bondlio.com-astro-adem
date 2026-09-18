@@ -123,6 +123,7 @@ export const tl: Translation = {
         privacyLabel: "Patakaran sa Privacy",
         termsLabel: "Mga Tuntunin ng Paggamit",
         allRightsReserved: "Lahat ng karapatan ay nakalaan.",
+        iskurNotice: "Ang kompanyang ito ay opisyal na kinikilalang Private Employment Agency sa ilalim ng awtorisasyon ng Turkish Employment Agency (İŞKUR), na may petsang 28.08.2026, desisyon blg. 21385534, lisensya blg. 2023. Alinsunod sa Turkish Labor Law No. 4904, ipinagbabawal ang paniningil ng anumang bayad o benepisyo mula sa mga naghahanap ng trabaho. Ang mga reklamo ay maaaring iparating sa Ankara Provincial Directorate ng Turkish Employment Agency.",
     },
 
     contactInfo: {

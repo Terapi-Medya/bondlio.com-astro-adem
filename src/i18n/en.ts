@@ -122,6 +122,7 @@ export const en: Translation = {
         privacyLabel: "Privacy Policy",
         termsLabel: "Terms of Service",
         allRightsReserved: "All rights reserved.",
+        iskurNotice: "This company operates as a licensed Private Employment Agency under the authorization of the Turkish Employment Agency (İŞKUR), dated 28.08.2026, decision no. 21385534, license no. 2023. Under Turkish Labor Law No. 4904, charging job seekers any fee or benefit is prohibited. Complaints may be directed to the Ankara Provincial Directorate of the Turkish Employment Agency.",
     },
 
     contactInfo: {

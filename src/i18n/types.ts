@@ -84,6 +84,7 @@ export interface Translation {
     privacyLabel: string;
     termsLabel: string;
     allRightsReserved: string;
+    iskurNotice: string;
   };
 
   contactInfo: {

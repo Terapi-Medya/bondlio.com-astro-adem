@@ -122,6 +122,7 @@ export const tr: Translation = {
         privacyLabel: "Gizlilik Politikası",
         termsLabel: "Kullanım Koşulları",
         allRightsReserved: "Tüm hakları saklıdır.",
+        iskurNotice: "Bu firma, Türkiye İş Kurumunun 28.08.2026 tarih ve 21385534 sayılı oluru ile 2023 izin numaralı özel istihdam bürosu olarak faaliyet göstermektedir. 4904 sayılı Türkiye İş Kanunu gereğince iş arayanlardan menfaat sağlanması ve ücret alınması yasaktır. Şikayetleriniz için Ankara Çalışma ve İş Kurumu İl Müdürlüğüne başvurabilirsiniz.",
     },
 
     contactInfo: {
