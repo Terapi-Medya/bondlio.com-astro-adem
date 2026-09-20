@@ -1,0 +1,47 @@
+---
+import { getLangContent } from "../i18n";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+
+const EMPLOYER_FORM = "https://forms.gle/V8RAMHhYduUy5wTo9";
+const APPLICANT_FORM = "https://forms.gle/ARM4nWyPHpAauk2C6";
+---
+
+<div class="grid md:grid-cols-2 gap-8 text-center">
+    <div class="bg-white border border-bondlio-beige rounded-2xl p-8">
+        <h3 class="text-xl font-display font-semibold text-bondlio-charcoal">
+            {content.homeForms.employerTitle}
+        </h3>
+        <hr class="mt-4 mb-2 border-gray-200" />
+        <p class="mt-6 text-bondlio-gray">
+            {content.homeForms.employerDescription}
+        </p>
+        <a
+            href={EMPLOYER_FORM}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-10 inline-flex items-center justify-center px-6 py-3 bg-bondlio-orange text-white font-display font-semibold rounded-lg hover:bg-bondlio-charcoal transition-colors duration-150"
+        >
+            {content.homeForms.formEmployerLabel}
+        </a>
+    </div>
+
+    <div class="bg-white border border-bondlio-beige rounded-2xl p-8">
+        <h3 class="text-xl font-display font-semibold text-bondlio-charcoal">
+            {content.homeForms.applicantTitle}
+        </h3>
+        <hr class="mt-4 mb-2 border-gray-200" />
+        <p class="mt-6 text-bondlio-gray">
+            {content.homeForms.applicantDescription}
+        </p>
+        <a
+            href={APPLICANT_FORM}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-10 inline-flex items-center justify-center px-6 py-3 bg-bondlio-orange text-white font-display font-semibold rounded-lg hover:bg-bondlio-charcoal transition-colors duration-150"
+        >
+            {content.homeForms.formApplicantLabel}
+        </a>
+    </div>
+</div>

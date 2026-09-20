@@ -150,4 +150,13 @@ export const tl: Translation = {
         submitButton: "Ipadala",
     },
 
+    homeForms: {
+        employerTitle: "Porma ng Empleyador",
+        employerDescription: "Ilang detalye para matulungan kaming mahanap ang tamang tao para sa iyo — kung tumpak mong ilalarawan ang iyong pangangailangan, irerekomenda namin ang pinakamahusay na tugma mula sa aming database.",
+        applicantTitle: "Porma ng Aplikante",
+        applicantDescription: "Ibahagi ang iyong karanasan at mga kagustuhan, at gagawin namin ang aming makakaya upang ikonekta ka sa pamilyang pinakamahusay na akma para sa iyo.",
+        formEmployerLabel: "Porma ng Empleyador",
+        formApplicantLabel: "Porma ng Aplikante",
+    },
+
 };

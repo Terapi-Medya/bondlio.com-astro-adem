@@ -34,7 +34,7 @@ export const tr: Translation = {
         cleaner: "Ev ya da ofis olsun; detaylı, güvenilir, düzenli ve titiz temizlik hizmeti.",
     },
     homepage: {
-        heroTitle: "Hızlı değil, doğru adımlar. Çünkü vakit değerli.",
+        heroTitle: "Hızlı değil, Doğru adımlar.",
         heroSubtitle: "Bondlio ekibi olarak hem aileleri hem de emek ve tecrübelerini ortaya koyacak kişileri aynı özenle tanımaya çalışıyoruz. Çünkü doğru eşleşme, karşılıklı saygı ve anlayışla başlar.",
         heroCtaText: "İletişim",
         howItWorksTitle: "Nasıl Çalışıyoruz?",
@@ -43,22 +43,22 @@ export const tr: Translation = {
             {
                 number: "01",
                 title: "Bize Ulaşın",
-                description: "Kısa bir mesaj yeterli — WhatsApp'tan ya da formdan, ihtiyacınızı anlatın.",
+                description: "İşveren Formu doldurun veya WhatsApp'tan kısa bir mesaj atın. İhtiyacınızı tam anlayalım..",
             },
             {
                 number: "02",
                 title: "Tanışalım",
-                description: "Sizi ve ihtiyacınızı gerçekten anlamak için görüşüyoruz. Standart bir form doldurmuyoruz.",
+                description: "Sizi ve ihtiyacınızı gerçekten anlamak için görüşüyoruz. Form doldurmuşsanız, formu dikkatlice inceliyoruz.",
             },
             {
                 number: "03",
                 title: "Doğru Eşleşme",
-                description: "Titizlikle incelediğimiz adaylar arasından, size en uygun olanı öneriyoruz.",
+                description: "Titizlikle incelediğimiz adaylar arasından, size en uygun adaları belirleyerek onayınıza sunuyoruz.",
             },
             {
                 number: "04",
-                title: "Takip ve Kontrol",
-                description: "Eşleşme sonrası da sürecin içindeyiz — bir sorun olursa, çözmek için buradayız.",
+                title: "Takip ve Destek",
+                description: "İşe yerleşme sonrasında da sürecin içindeyiz — bir sorun olursa birlikte, çözmek için çaba sarfediyoruz.",
             },
         ],
         aboutQuote: "Sektörde onlarca ajans var, herkes 'bize güvenin' diyor. Biz bunu söylemek yerine, nasıl çalıştığımızı gösteriyoruz.",
@@ -147,6 +147,16 @@ export const tr: Translation = {
         phoneLabel: "Telefon",
         messageLabel: "Mesajınız",
         submitButton: "Gönder",
+    },
+
+
+    homeForms: {
+        employerTitle: "İşveren Bilgi Formu",
+        employerDescription: "Aradığınız kişiyi bulmamıza yardımcı olacak birkaç detay — ihtiyacınızı tam tanımlarsanız, veritabanımızdan en uygun eşleşmeyi önerebiliriz.",
+        applicantTitle: "Başvuran Bilgi Formu",
+        applicantDescription: "Deneyiminizi, istek ve tercihlerinizi paylaşın, size en uygun aileyle veya kurumla sizi buluşturalım.",
+        formEmployerLabel: "İşveren Formu",
+        formApplicantLabel: "Başvuran Formu",
     },
 
 };

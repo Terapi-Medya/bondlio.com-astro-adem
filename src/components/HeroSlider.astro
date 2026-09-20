@@ -1,0 +1,133 @@
+---
+import slide1 from "../assets/bondlio-hero-slider-1.webp";
+import slide2 from "../assets/bondlio-hero-slider-2.webp";
+import slide3 from "../assets/bondlio-hero-slider-3.webp";
+
+const slides = [slide1, slide2, slide3];
+---
+
+<div
+    id="hero-slider"
+    class="relative w-full aspect-[3/2] md:aspect-[3/1] rounded-2xl overflow-hidden"
+>
+    {
+        slides.map((slide, index) => (
+            <div
+                class="hero-slide absolute inset-0 transition-opacity duration-1000"
+                class:list={[index === 0 ? "opacity-100" : "opacity-0"]}
+                data-index={index}
+            >
+                <img
+                    src={slide.src}
+                    alt={`Bondlio ${index + 1}`}
+                    class="w-full h-full object-cover"
+                />
+            </div>
+        ))
+    }
+
+    <button
+        id="slider-prev"
+        aria-label="Önceki"
+        class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/80 hover:bg-white rounded-full transition-colors duration-150"
+    >
+        <svg
+            class="w-5 h-5 text-bondlio-charcoal"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+    </button>
+    <button
+        id="slider-next"
+        aria-label="Sonraki"
+        class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/80 hover:bg-white rounded-full transition-colors duration-150"
+    >
+        <svg
+            class="w-5 h-5 text-bondlio-charcoal"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        >
+            <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+    </button>
+
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+        {
+            slides.map((_, index) => (
+                <button
+                    class="slider-dot w-2.5 h-2.5 rounded-full transition-colors duration-150"
+                    class:list={[index === 0 ? "bg-white" : "bg-white/50"]}
+                    data-index={index}
+                    aria-label={`Slayt ${index + 1}`}
+                />
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll(".hero-slide");
+    const dots = document.querySelectorAll(".slider-dot");
+    const prevBtn = document.getElementById("slider-prev");
+    const nextBtn = document.getElementById("slider-next");
+
+    let current = 0;
+    let interval: ReturnType<typeof setInterval>;
+
+    function showSlide(index: number) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle("opacity-100", i === index);
+            slide.classList.toggle("opacity-0", i !== index);
+        });
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("bg-white", i === index);
+            dot.classList.toggle("bg-white/50", i !== index);
+        });
+        current = index;
+    }
+
+    function nextSlide() {
+        showSlide((current + 1) % slides.length);
+    }
+
+    function prevSlide() {
+        showSlide((current - 1 + slides.length) % slides.length);
+    }
+
+    function startAutoplay() {
+        interval = setInterval(nextSlide, 6000);
+    }
+
+    function resetAutoplay() {
+        clearInterval(interval);
+        startAutoplay();
+    }
+
+    nextBtn?.addEventListener("click", () => {
+        nextSlide();
+        resetAutoplay();
+    });
+    prevBtn?.addEventListener("click", () => {
+        prevSlide();
+        resetAutoplay();
+    });
+    dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+            const index = parseInt(dot.getAttribute("data-index") || "0");
+            showSlide(index);
+            resetAutoplay();
+        });
+    });
+
+    startAutoplay();
+</script>

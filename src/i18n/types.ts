@@ -111,4 +111,13 @@ export interface Translation {
     submitButton: string;
   };
 
+  homeForms: {
+    employerTitle: string;
+    employerDescription: string;
+    applicantTitle: string;
+    applicantDescription: string;
+    formEmployerLabel: string;
+    formApplicantLabel: string;
+  };
+
 }
