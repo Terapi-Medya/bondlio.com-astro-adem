@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
 import { getCollection } from "astro:content";
-import ServiceCTA from "../components/ServiceCTA.astro";
 
 const allPosts = await getCollection("blog");
 const posts = allPosts
@@ -70,6 +69,4 @@ const posts = allPosts
             }
         </div>
     </section>
-
-    <ServiceCTA />
 </Layout>

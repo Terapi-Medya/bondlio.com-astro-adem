@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+import ServiceCTA from "../components/ServiceCTA.astro";
 
 interface Props {
 	lang?: string;
@@ -30,6 +31,9 @@ const currentLang = lang ?? Astro.currentLocale ?? "tr";
 	<body class="bg-bondlio-cream font-body text-bondlio-charcoal">
 		<Navbar currentPage={currentPage} />
 		<slot />
+		<section class="page-content-container py-5">
+			<ServiceCTA />
+		</section>
 		<Footer />
 		<FloatingWhatsApp />
 	</body>
