@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import AboutIntro from "../../components/AboutIntro.astro";
+import HomeForms from "../../components/HomeForms.astro";
 ---
 
 <Layout
@@ -14,4 +15,8 @@ import AboutIntro from "../../components/AboutIntro.astro";
         description="Ang kuwento at mga halaga ng Bondlio."
     />
     <AboutIntro />
+
+    <section class="page-content-container py-5">
+        <HomeForms />
+    </section>
 </Layout>

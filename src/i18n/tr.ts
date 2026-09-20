@@ -155,8 +155,8 @@ export const tr: Translation = {
         employerDescription: "Formu sabırla doldurup aradığınız kişiyi bulmamıza yardımcı olacak detaylı bilgileri verirseniz, size en uygun eşleşmeyi hızlıca önerebiliriz.",
         applicantTitle: "Çalışan Bilgi Formu",
         applicantDescription: "Deneyiminizi, istek ve tercihlerinizi detaylı belirtirseniz, size en uygun aileyle veya kurumla sizi buluşturma imkanımız artar.",
-        formEmployerLabel: "İşveren Formu Doldur",
-        formApplicantLabel: "Aday Formu Doldur",
+        formEmployerLabel: "İşveren İstek Formu",
+        formApplicantLabel: "Aday Başvuru Formu",
     },
 
 };
