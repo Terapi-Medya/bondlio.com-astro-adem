@@ -42,12 +42,12 @@ export const tr: Translation = {
         steps: [
             {
                 number: "01",
-                title: "Bize Ulaşın",
-                description: "İşveren Formu doldurun veya WhatsApp'tan kısa bir mesaj atın. İhtiyacınızı tam anlayalım..",
+                title: "İhtiyaç Tespiti",
+                description: "İhtiyacınızı tam anlamak adına <strong>İşveren İstek Formunu</strong> doldurun veya WhatsApp'tan kısa bir mesaj atın.",
             },
             {
                 number: "02",
-                title: "Tanışalım",
+                title: "Tanışma ve Değerlendirme",
                 description: "Sizi ve ihtiyacınızı gerçekten anlamak için görüşüyoruz. Form doldurmuşsanız, formu dikkatlice inceliyoruz.",
             },
             {
@@ -57,33 +57,33 @@ export const tr: Translation = {
             },
             {
                 number: "04",
-                title: "Takip ve Destek",
+                title: "Süreç Takibi",
                 description: "İşe yerleşme sonrasında da sürecin içindeyiz — bir sorun olursa birlikte, çözmek için çaba sarfediyoruz.",
             },
         ],
-        aboutQuote: "Sektörde onlarca ajans var, herkes 'bize güvenin' diyor. Biz bunu söylemek yerine, nasıl çalıştığımızı gösteriyoruz.",
+        aboutQuote: "Piyasada çok sayıda ajans var, çoğu 'bize güvenin, hallederiz' diyor. Farkındayız. Bu soruna çözüm olarak sadece 'lafta kalmayan' ama analitik yaklaşımlarla, belli bir matematiğe dayalı bilimsel tekniklerleri kullanan bir yaklaşımla hareket ediyoruz.",
         aboutCtaText: "Hikayemizi Okuyun",
         servicesPreviewTitle: "Hizmetlerimiz",
-        servicesPreviewSubtitle: "İhtiyacınıza en uygun hizmeti seçin, birlikte karar verelim.",
+        servicesPreviewSubtitle: "İhtiyacınıza en uygun hizmeti seçin ve tarif edin, birlikte karar verelim.",
         blogPreviewTitle: "Bilgi Defteri",
-        blogPreviewSubtitle: "Bakım ve ev hizmetleri hakkında merak ettikleriniz.",
+        blogPreviewSubtitle: "Bakım, çocuk bakıcısı, temizlik, otel oda temizlikçileri, yabancı çalışanlar ve yaşlı bakıcıları hakkında merak ettikleriniz.",
         valuePropsTitle: "Neden Bondlio?",
         valuePropsSubtitle: "Güven, titizlikle kurulur.",
         viewDetailsText: "Detaylı bilgi",
         values: [
             {
                 title: "Titiz Değerlendirme",
-                description: "Her aday, hem aile hem çalışan tarafında dikkatle incelenir. Kısayol yok, sadece güven var.",
+                description: "Her aday, hem aile hem de çalışanlar için dikkatle incelenir. Kısayol yok, sadece güvene öncelik veriyoruz.",
                 icon: "check-shield",
             },
             {
-                title: "Yasal Güvence",
-                description: "Tüm süreçlerimiz eksiksiz yasal çerçevede yürütülür. Sürprizlerle değil, huzurla tanışın.",
+                title: "Yasal Süreçler",
+                description: "Tüm süreçlerimizi olabildiğince eksiksiz yasal çerçevede yürütüyoruz. Sürprizlerle karşılaşmayı inanın biz de istemiyoruz.",
                 icon: "document",
             },
             {
                 title: "İki Taraf, Tek Standart",
-                description: "Aileleri de, evlere emek verecek kişileri de aynı özenle değerlendiririz.",
+                description: "Adayları da, aileleri de aynı özenle değerlendiriyor ve doğru eşleştirme için elimizden geleni yapıyoruz.",
                 icon: "handshake",
             },
         ],
@@ -95,7 +95,7 @@ export const tr: Translation = {
         intro: "Bu sektörde birçok kuruluş, öncelikle hızlı ve çok eşleştirme yapmak üzerine kurulu — çünkü gelirleri buna bağlı. Biz bu yaklaşımın kaliteyi geride bıraktığını gördük. Bondlio'da amacımız sayı değil, doğru eşleşme. Bu yüzden adayları olduğu kadar işverenleri de titizlikle değerlendiriyoruz; çünkü güven, tek taraflı bir eleme ile kurulmaz.",
         features: [
             {
-                title: "Herkesin standardı farklı.",
+                title: "Herkesin standardı farklıdır.",
                 description: "Aileler ve çalışanlar aynı değerlere, aynı beklentilere sahip değil. Biz bunu bir engel değil, eşleştirmenin temeli olarak görüyoruz — kime, kimin en uygun olduğunu anlamaya çalışıyoruz.",
             },
             {
@@ -104,15 +104,15 @@ export const tr: Translation = {
             },
             {
                 title: "Adil ödeme, açık koşullar.",
-                description: "Ücretlendirmemiz şeffaftır. Ne çalışanı ne de aileyi mağdur eden gizli koşullar yok.",
+                description: "Anlayışlı ödeme seçenekleri sunuyoruz. Ne çalışanı ne de aileyi mağdur eden gizli koşullar yok.",
             },
         ],
         closingQuote: "Bondlio, her iki tarafı da önemser. Çünkü güven, kâr hesabından değil, doğru niyetten doğar.",
     },
 
     serviceProcess: {
-        title: "Neyi Kontrol Ediyoruz?",
-        subtitle: "Her aday, işe başlamadan önce aynı titiz süreçten geçer. Kısayol yok, sadece güven.",
+        title: "Güvenlik, Bizim İçin Kısayol Değildir.",
+        subtitle: "Adayların referanslarını titizlikle kontrol ediyoruz. Çıkarılan her sonuç, hem aileler hem de bakıcılar için daha güvenli bir zemin oluşturuyor.",
     },
 
     footer: {
@@ -152,9 +152,9 @@ export const tr: Translation = {
 
     homeForms: {
         employerTitle: "İşveren Bilgi Formu",
-        employerDescription: "Formu sabırla doldurup aradığınız kişiyi bulmamıza yardımcı olacak detaylı bilgileri verirseniz, size en uygun eşleşmeyi hızlıca önerebiliriz.",
+        employerDescription: "Size en uygun eşleşmeyi <strong>doğru ve hızlı</strong> şekilde önerebilmemiz için, İşveren Formu'nu mümkün olduğunca eksiksiz doldurmanız çok önemli. <strong>Vereceğiniz her detay</strong>, sürecin size özel, isabetli ilerlemesini sağlar — lütfen aceleye getirmeyin.",
         applicantTitle: "Çalışan Bilgi Formu",
-        applicantDescription: "Deneyiminizi, istek ve tercihlerinizi detaylı belirtirseniz, size en uygun aileyle veya kurumla sizi buluşturma imkanımız artar.",
+        applicantDescription: "Sizi doğru aileyle buluşturabilmemiz için, Başvuru Formu'nu özenle ve eksiksiz doldurmanız gerçekten fark yaratıyor. <strong>Paylaştığınız her bilgi</strong>, hem sizin hem de ailenin birbirini doğru tanımasını sağlıyor — lütfen zaman ayırın.",
         formEmployerLabel: "İşveren Bilgi Formu",
         formApplicantLabel: "Aday Başvuru Formu",
     },

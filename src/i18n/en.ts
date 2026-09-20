@@ -151,9 +151,9 @@ export const en: Translation = {
 
     homeForms: {
         employerTitle: "Employer Form",
-        employerDescription: "Please take a moment to fill out this form with details about what you're looking for. The more precise you are, the better we can assist you in finding the right match.",
+        employerDescription: "To help us recommend <strong>the right match</strong> for you quickly and accurately, please take the time to fill out the 'Employer Form' as completely as possible. <strong>The more details you provide</strong>, the better we can assist you in finding the right person.",
         applicantTitle: "Applicant Form",
-        applicantDescription: "Please share your experience and preferences in detail. The more information you provide, the better we can help you find the right opportunity.",
+        applicantDescription: "To connect you with the right family, filling out the Application Form <strong>carefully and completely</strong> makes a difference. <strong>The information you share</strong> helps both you and the family get to know each other properly — please take your time.",
         formEmployerLabel: "Employer Form",
         formApplicantLabel: "Applicant Form",
     },

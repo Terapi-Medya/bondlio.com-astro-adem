@@ -14,9 +14,10 @@ const APPLICANT_FORM = "https://forms.gle/ARM4nWyPHpAauk2C6";
             {content.homeForms.employerTitle}
         </h3>
         <hr class="mt-4 mb-2 border-gray-200" />
-        <p class="mt-6 text-bondlio-gray">
-            {content.homeForms.employerDescription}
-        </p>
+        <p
+            class="mt-6 text-bondlio-gray"
+            set:html={content.homeForms.employerDescription}
+        />
         <a
             href={EMPLOYER_FORM}
             target="_blank"
@@ -32,9 +33,10 @@ const APPLICANT_FORM = "https://forms.gle/ARM4nWyPHpAauk2C6";
             {content.homeForms.applicantTitle}
         </h3>
         <hr class="mt-4 mb-2 border-gray-200" />
-        <p class="mt-6 text-bondlio-gray">
-            {content.homeForms.applicantDescription}
-        </p>
+        <p
+            class="mt-6 text-bondlio-gray"
+            set:html={content.homeForms.applicantDescription}
+        />
         <a
             href={APPLICANT_FORM}
             target="_blank"

@@ -152,9 +152,9 @@ export const tl: Translation = {
 
     homeForms: {
         employerTitle: "Porma ng Empleyador",
-        employerDescription: "Ilang detalye para matulungan kaming mahanap ang tamang tao para sa iyo — kung tumpak mong ilalarawan ang iyong pangangailangan, irerekomenda namin ang pinakamahusay na tugma mula sa aming database.",
+        employerDescription: "Upang matulungan kaming <strong>mabilis at tumpak</strong> na makapagrekomenda ng <strong>tamang tugma</strong> para sa iyo, mangyaring luangkan ng oras upang punan ang 'Porma ng Empleyador' nang kumpleto hangga't maaari. <strong>Kung mas maraming detalye ang iyong ibibigay</strong>, mas mahusay kaming makakatulong sa iyo na mahanap ang tamang tao.",
         applicantTitle: "Porma ng Aplikante",
-        applicantDescription: "Ibahagi ang iyong karanasan at mga kagustuhan, at gagawin namin ang aming makakaya upang ikonekta ka sa pamilyang pinakamahusay na akma para sa iyo.",
+        applicantDescription: "Upang maikonekta ka sa tamang pamilya, ang pagpuno ng Application Form nang maingat at kumpleto ay talagang nagbibigay ng <strong>pagkakaiba</strong>. <strong>Ang impormasyong ibinabahagi mo</strong> ay tumutulong sa iyo at sa pamilya na makilala ang isa't isa nang maayos — mangyaring luangkan ng oras.",
         formEmployerLabel: "Porma ng Empleyador",
         formApplicantLabel: "Porma ng Aplikante",
     },
