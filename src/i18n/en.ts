@@ -151,7 +151,7 @@ export const en: Translation = {
 
     homeForms: {
         employerTitle: "Employer Form",
-        employerDescription: "A few details to help us find the right person for you — if you describe your needs precisely, we'll recommend the best match from our database.",
+        employerDescription: "A few details to help us find the right person for you. If you describe your needs precisely, we'll recommend the best match from our database.",
         applicantTitle: "Applicant Form",
         applicantDescription: "Share your experience and preferences, and we'll do our best to connect you with the family or institution that's the best fit for you.",
         formEmployerLabel: "Employer Form",
