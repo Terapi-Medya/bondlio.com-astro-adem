@@ -152,7 +152,7 @@ export const tr: Translation = {
 
     homeForms: {
         employerTitle: "İşveren Bilgi Formu",
-        employerDescription: "Aradığınız kişiyi bulmamıza yardımcı olacak birkaç detay verin. İhtiyacınızı tam tanımlarsanız, veritabanımızdan en uygun eşleşmeyi önerebiliriz.",
+        employerDescription: "Aradığınız kişiyi bulmamıza yardımcı olacak birkaç detay verip ihtiyacınızı tam tanımlarsanız, veritabanımızdan en uygun eşleşmeyi önerebiliriz.",
         applicantTitle: "Başvuran Bilgi Formu",
         applicantDescription: "Deneyiminizi, istek ve tercihlerinizi paylaşın, size en uygun aileyle veya kurumla sizi buluşturalım.",
         formEmployerLabel: "İşveren Formu",
