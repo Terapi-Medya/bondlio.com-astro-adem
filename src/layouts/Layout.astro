@@ -30,6 +30,7 @@ const currentLang = lang ?? Astro.currentLocale ?? "tr";
 
 		<!-- Google Tag Manager -->
 		<script>
+			// @ts-nocheck
 			(function (w, d, s, l, i) {
 				w[l] = w[l] || [];
 				w[l].push({
@@ -47,7 +48,8 @@ const currentLang = lang ?? Astro.currentLocale ?? "tr";
 		<!-- End Google Tag Manager -->
 
 		<!-- Meta Pixel Code -->
-		<script>
+		<script is:inline>
+			// @ts-nocheck
 			!(function (f, b, e, v, n, t, s) {
 				if (f.fbq) return;
 				n = f.fbq = function () {
