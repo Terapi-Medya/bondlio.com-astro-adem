@@ -18,6 +18,12 @@ const content = getLangContent(lang);
         autocomplete="off"
     />
 
+    <input
+        type="hidden"
+        name="_redirect"
+        value={`https://bondlio.com${content.routes.thankYou}`}
+    />
+
     <div class="sm:col-span-2">
         <label
             for="name"

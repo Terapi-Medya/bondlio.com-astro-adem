@@ -14,6 +14,7 @@ export const en: Translation = {
         contact: "/en/contact",
         privacy: "/en/privacy-policy",
         terms: "/en/terms-of-service",
+        thankYou: "/en/thank-you",
     },
     nav: {
         home: "Home",
@@ -156,6 +157,12 @@ export const en: Translation = {
         applicantDescription: "To connect you with the right family, filling out the Application Form <strong>carefully and completely</strong> makes a difference. <strong>The information you share</strong> helps both you and the family get to know each other properly — please take your time.",
         formEmployerLabel: "Employer Form",
         formApplicantLabel: "Applicant Form",
+    },
+
+    thankYou: {
+        title: "Thank You!",
+        message: "Your message has reached us. We will get back to you as soon as possible.",
+        backToHomeText: "Back to Home",
     },
 
 };

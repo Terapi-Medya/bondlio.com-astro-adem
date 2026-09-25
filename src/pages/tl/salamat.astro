@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getLangContent } from "../../i18n";
+
+const lang = Astro.currentLocale ?? "tr";
+const content = getLangContent(lang);
+---
+
+<Layout
+    title="Salamat | Bondlio"
+    description="Naabot na namin ang inyong mensahe."
+    currentPage="home"
+>
+    <section class="page-content-container py-24 text-center">
+        <div class="max-w-xl mx-auto">
+            <div
+                class="w-16 h-16 mx-auto rounded-full bg-bondlio-beige flex items-center justify-center"
+            >
+                <svg
+                    class="w-8 h-8 text-bondlio-orange"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h1
+                class="mt-6 text-3xl md:text-4xl font-display font-bold text-bondlio-charcoal"
+            >
+                {content.thankYou.title}
+            </h1>
+            <p class="mt-4 text-lg text-bondlio-gray">
+                {content.thankYou.message}
+            </p>
+            <a
+                href={content.routes.home}
+                class="mt-8 inline-flex items-center justify-center px-6 py-3 bg-bondlio-orange
+            text-white font-display font-semibold rounded-lg hover:bg-bondlio-darker-orange
+            transition-colors duration-150"
+            >
+                {content.thankYou.backToHomeText}
+            </a>
+        </div>
+    </section>
+</Layout>

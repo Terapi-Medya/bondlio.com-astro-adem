@@ -14,6 +14,7 @@ export const tl: Translation = {
         contact: "/tl/makipag-ugnayan",
         privacy: "/tl/patakaran-sa-privacy",
         terms: "/tl/mga-tuntunin-ng-paggamit",
+        thankYou: "/tl/salamat",
     },
     nav: {
         home: "Simula",
@@ -158,5 +159,12 @@ export const tl: Translation = {
         formEmployerLabel: "Porma ng Empleyador",
         formApplicantLabel: "Porma ng Aplikante",
     },
+
+    thankYou: {
+        title: "Salamat!",
+        message: "Naabot na kami ng iyong mensahe. Sisikap naming tumugon sa lalong madaling panahon.",
+        backToHomeText: "Bumalik sa Simula",
+    },
+
 
 };

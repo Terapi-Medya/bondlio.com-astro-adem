@@ -14,6 +14,7 @@ export const tr: Translation = {
         contact: "/iletisim",
         privacy: "/gizlilik-politikasi",
         terms: "/kullanim-kosullari",
+        thankYou: "/tesekkurler",
     },
     nav: {
         home: "Anasayfa",
@@ -157,6 +158,12 @@ export const tr: Translation = {
         applicantDescription: "Sizi doğru aileyle buluşturabilmemiz için, Başvuru Formu'nu özenle ve eksiksiz doldurmanız gerçekten fark yaratıyor. <strong>Paylaştığınız her bilgi</strong>, hem sizin hem de ailenin birbirini doğru tanımasını sağlıyor — lütfen zaman ayırın.",
         formEmployerLabel: "İşveren Bilgi Formu",
         formApplicantLabel: "Aday Başvuru Formu",
+    },
+
+    thankYou: {
+        title: "Teşekkürler!",
+        message: "Mesajınız bize ulaştı, en kısa sürede dönüş yapacağız.",
+        backToHomeText: "Anasayfaya Dön",
     },
 
 };

@@ -12,6 +12,7 @@ export interface Translation {
     contact: string;
     privacy: string;
     terms: string;
+    thankYou: string;
   };
 
   nav: {
@@ -118,6 +119,12 @@ export interface Translation {
     applicantDescription: string;
     formEmployerLabel: string;
     formApplicantLabel: string;
+  };
+
+  thankYou: {
+    title: string;
+    message: string;
+    backToHomeText: string;
   };
 
 }
