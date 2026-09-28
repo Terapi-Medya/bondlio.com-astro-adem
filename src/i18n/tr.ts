@@ -153,7 +153,7 @@ export const tr: Translation = {
 
     homeForms: {
         employerTitle: "İşveren Bilgi Formu",
-        employerDescription: "Size en uygun eşleşmeyi <strong>doğru ve hızlı</strong> şekilde önerebilmemiz için, İşveren Formu'nu mümkün olduğunca eksiksiz doldurmanız sürecimizin daha hızlı ve doğru ilerlemesini sağlıyor (çoktan seçmeli - 5-7dk). <strong>Vereceğiniz her detay</strong>, sürecin size özel, isabetli ilerlemesini sağlıyor.",
+        employerDescription: "Size en uygun eşleşmeyi <strong>doğru ve hızlı</strong> şekilde önerebilmemiz için, İşveren Formu'nu mümkün olduğunca eksiksiz doldurun <strong>(çoktan seçmeli - 5-7dk)</strong>. Vereceğiniz her detay, sürecin size özel, isabetli ilerlemesini sağlar.",
         applicantTitle: "Çalışan Bilgi Formu",
         applicantDescription: "Sizi doğru aileyle buluşturabilmemiz için, Başvuru Formu'nu özenle ve eksiksiz doldurmanız gerçekten fark yaratıyor. <strong>Paylaştığınız her bilgi</strong>, hem sizin hem de ailenin birbirini doğru tanımasını sağlıyor — lütfen zaman ayırın.",
         formEmployerLabel: "İşveren Bilgi Formu",
