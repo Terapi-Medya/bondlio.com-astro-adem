@@ -64,7 +64,7 @@ export const tr: Translation = {
         ],
         aboutQuote: "Piyasada çok sayıda ajans var, çoğu 'bize güvenin, hallederiz' diyor. Farkındayız. Bu soruna çözüm olarak sadece 'lafta kalmayan' ama analitik yaklaşımlarla, belli bir matematiğe dayalı bilimsel tekniklerleri kullanan bir yaklaşımla hareket ediyoruz.",
         aboutCtaText: "Hikayemizi Okuyun",
-        servicesPreviewTitle: "Hizmetlerimiz",
+        servicesPreviewTitle: "Öne Çıkan Hizmetlerimiz",
         servicesPreviewSubtitle: "İhtiyacınıza en uygun hizmeti seçin ve tarif edin, birlikte karar verelim.",
         blogPreviewTitle: "Bilgi Defteri",
         blogPreviewSubtitle: "Bakım, çocuk bakıcısı, temizlik, otel oda temizlikçileri, yabancı çalışanlar ve yaşlı bakıcıları hakkında merak ettikleriniz.",
