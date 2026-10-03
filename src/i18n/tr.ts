@@ -158,6 +158,8 @@ export const tr: Translation = {
         applicantDescription: "Sizi doğru aileyle buluşturabilmemiz için, Başvuru Formu'nu özenle ve eksiksiz doldurmanız gerçekten fark yaratıyor. <strong>Paylaştığınız her bilgi</strong>, hem sizin hem de ailenin birbirini doğru tanımasını sağlıyor — lütfen zaman ayırın.",
         formEmployerLabel: "İşveren Bilgi Formu",
         formApplicantLabel: "Aday Başvuru Formu",
+        homeFormTitle: "Tanıma Formları",
+        homeFormDescription: "İşveren veya çalışan olarak birbirimizi tanıma süreçlerimizi hızlandırmak için ilgili formu doldurabilirsiniz.",
     },
 
     thankYou: {

@@ -158,6 +158,8 @@ export const tl: Translation = {
         applicantDescription: "Upang maikonekta ka sa tamang pamilya, ang pagpuno ng Application Form nang maingat at kumpleto ay talagang nagbibigay ng <strong>pagkakaiba</strong>. <strong>Ang impormasyong ibinabahagi mo</strong> ay tumutulong sa iyo at sa pamilya na makilala ang isa't isa nang maayos — mangyaring luangkan ng oras.",
         formEmployerLabel: "Porma ng Empleyador",
         formApplicantLabel: "Porma ng Aplikante",
+        homeFormTitle: "Magkilala Tayo",
+        homeFormDescription: "Employer man o empleyado, maaari ninyong punan ang kaukulang form upang mapabilis ang proseso ng pagkilala sa isa't isa.",
     },
 
     thankYou: {

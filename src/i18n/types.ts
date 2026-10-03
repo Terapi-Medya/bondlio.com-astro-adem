@@ -119,6 +119,8 @@ export interface Translation {
     applicantDescription: string;
     formEmployerLabel: string;
     formApplicantLabel: string;
+    homeFormTitle: string;
+    homeFormDescription: string;
   };
 
   thankYou: {

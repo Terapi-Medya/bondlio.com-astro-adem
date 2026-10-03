@@ -157,6 +157,8 @@ export const en: Translation = {
         applicantDescription: "To connect you with the right family, filling out the Application Form <strong>carefully and completely</strong> makes a difference. <strong>The information you share</strong> helps both you and the family get to know each other properly — please take your time.",
         formEmployerLabel: "Employer Form",
         formApplicantLabel: "Applicant Form",
+        homeFormTitle: "Let's Get to Know Each Other",
+        homeFormDescription: "Employer or employee, you can fill out the relevant form to speed up the process of getting to know each other.",
     },
 
     thankYou: {
