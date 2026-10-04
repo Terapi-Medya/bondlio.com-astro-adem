@@ -24,6 +24,7 @@ const { Content } = await render(post);
     title={`${post.data.title} | Bondlio`}
     description={post.data.description}
     currentPage="infobook"
+    canonical={Astro.url.href}
 >
     <section class="page-content-container pt-20">
         <div class="max-w-3xl mx-auto pb-8 border-b border-bondlio-beige">

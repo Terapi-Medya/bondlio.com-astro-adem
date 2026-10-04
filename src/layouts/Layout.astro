@@ -10,9 +10,10 @@ interface Props {
 	title: string;
 	description: string;
 	currentPage: string;
+	canonical?: string;
 }
 
-const { lang, title, description, currentPage } = Astro.props;
+const { lang, title, description, currentPage, canonical } = Astro.props;
 
 const currentLang = lang ?? Astro.currentLocale ?? "tr";
 ---
@@ -27,6 +28,7 @@ const currentLang = lang ?? Astro.currentLocale ?? "tr";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+		{canonical && <link rel="canonical" href={canonical} />}
 
 		<!-- Google Tag Manager -->
 		<script>

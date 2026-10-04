@@ -6,6 +6,7 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://bondlio.com',
   i18n: {
     defaultLocale: 'tr',
     locales: ['tr', 'en', 'tl'],
