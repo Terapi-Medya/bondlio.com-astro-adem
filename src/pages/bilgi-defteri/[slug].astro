@@ -24,6 +24,8 @@ const { Content } = await render(post);
     description={post.data.description}
     currentPage="infobook"
     canonical={Astro.url.href}
+    publishDate={post.data.publishDate.toISOString().split('T')[0]}
+    modifiedDate={post.data.modifiedDate ? post.data.modifiedDate.toISOString().split('T')[0] : post.data.publishDate.toISOString().split('T')[0]}
 >
     <section class="page-content-container pt-20">
         <div class="max-w-3xl mx-auto pb-10 border-b border-bondlio-beige">
