@@ -40,7 +40,7 @@ jobs:
           set net:timeout 30
           set net:max-retries 3
           set net:reconnect-interval-base 5
-          mirror -R --verbose --delete --parallel=2 --ignore-time ./ $REMOTE_DIR
+          mirror -R --verbose --delete --parallel=1 ./ $REMOTE_DIR
           quit
           EOF
       - name: ✅ Deploy Başarılı
