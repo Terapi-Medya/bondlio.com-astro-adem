@@ -16,6 +16,185 @@ interface Props {
 const { lang, title, description, currentPage, canonical } = Astro.props;
 
 const currentLang = lang ?? Astro.currentLocale ?? "tr";
+
+// Generate hreflang URLs based on canonical URL
+function getHreflangUrls(canonicalUrl?: string) {
+	const site = "https://bondlio.com";
+
+	if (!canonicalUrl) return {
+		tr: `${site}/`,
+		en: `${site}/en/`,
+		tl: `${site}/tl/`,
+		"x-default": `${site}/`
+	};
+
+	// Extract path from canonical URL
+	const url = new URL(canonicalUrl);
+	let path = url.pathname;
+
+	// Normalize: remove trailing slash for processing
+	path = path.replace(/\/$/, "");
+
+	// Handle root
+	if (path === "") {
+		return {
+			tr: `${site}/`,
+			en: `${site}/en/`,
+			tl: `${site}/tl/`,
+			"x-default": `${site}/`
+		};
+	}
+
+	// Normalize path: always work with Turkish base path as canonical
+	// We'll convert any locale path to its Turkish equivalent first
+	let basePath = path;
+
+	// Check if path already has locale prefix
+	const localeMatch = path.match(/^\/(en|tl)(?:\/|$)/);
+	if (localeMatch) {
+		const locale = localeMatch[1];
+		const restPath = path.slice(localeMatch[0].length);
+		const cleanRest = restPath === "" ? "/" : restPath;
+		
+		// Map from locale-specific path to Turkish base path
+		const reverseMappings: Record<string, Record<string, string>> = {
+			en: {
+				"/about": "/hakkinda",
+				"/contact": "/iletisim",
+				"/services": "/hizmetler",
+				"/services/nanny": "/hizmetler/cocuk-bakici",
+				"/services/caregiver": "/hizmetler/yasli-bakici",
+				"/services/cleaner": "/hizmetler/temizlikci",
+				"/infobook": "/bilgi-defteri",
+				"/privacy": "/gizlilik-politikasi",
+				"/terms": "/kullanim-kosullari",
+				"/thank-you": "/tesekkurler",
+			},
+			tl: {
+				"/tungkol-sa-amin": "/hakkinda",
+				"/makipag-ugnayan": "/iletisim",
+				"/serbisyo": "/hizmetler",
+				"/serbisyo/yaya": "/hizmetler/cocuk-bakici",
+				"/serbisyo/tagapag-alaga": "/hizmetler/yasli-bakici",
+				"/serbisyo/tagalinis": "/hizmetler/temizlikci",
+				"/aklat-ng-kaalaman": "/bilgi-defteri",
+				"/privacy": "/gizlilik-politikasi",
+				"/terms": "/kullanim-kosullari",
+				"/salamat": "/tesekkurler",
+			}
+		};
+
+		const rest = cleanRest.startsWith("/") ? cleanRest : "/" + cleanRest;
+		if (reverseMappings[locale]?.[rest]) {
+			basePath = reverseMappings[locale][rest];
+		} else if (rest.startsWith("/infobook/")) {
+			basePath = "/bilgi-defteri" + rest.slice("/infobook".length);
+		} else if (rest.startsWith("/services/")) {
+			const serviceMap: Record<string, string> = {
+				"/nanny": "/cocuk-bakici",
+				"/caregiver": "/yasli-bakici",
+				"/cleaner": "/temizlikci",
+			};
+			const suffix = rest.slice("/services".length);
+			if (serviceMap[suffix]) {
+				basePath = "/hizmetler" + serviceMap[suffix];
+			} else {
+				basePath = "/hizmetler" + suffix;
+			}
+		} else if (rest.startsWith("/serbisyo/")) {
+			const serviceMap: Record<string, string> = {
+				"/yaya": "/cocuk-bakici",
+				"/tagapag-alaga": "/yasli-bakici",
+				"/tagalinis": "/temizlikci",
+			};
+			const suffix = rest.slice("/serbisyo".length);
+			if (serviceMap[suffix]) {
+				basePath = "/hizmetler" + serviceMap[suffix];
+			} else {
+				basePath = "/hizmetler" + suffix;
+			}
+		} else if (rest.startsWith("/aklat-ng-kaalaman/")) {
+			basePath = "/bilgi-defteri" + rest.slice("/aklat-ng-kaalaman".length);
+		} else {
+			// Default: just remove locale prefix
+			basePath = cleanRest;
+		}
+	} else {
+		// Already Turkish path, ensure leading slash
+		if (!basePath.startsWith("/")) basePath = "/" + basePath;
+	}
+
+	// Ensure basePath starts with /
+	if (!basePath.startsWith("/")) basePath = "/" + basePath;
+
+	// Special path mappings for different locales
+	const pathMappings: Record<string, { tr: string; en: string; tl: string }> = {
+		"/hakkinda": { tr: "/hakkinda", en: "/en/about", tl: "/tl/tungkol-sa-amin" },
+		"/iletisim": { tr: "/iletisim", en: "/en/contact", tl: "/tl/makipag-ugnayan" },
+		"/hizmetler": { tr: "/hizmetler", en: "/en/services", tl: "/tl/serbisyo" },
+		"/hizmetler/cocuk-bakici": { tr: "/hizmetler/cocuk-bakici", en: "/en/services/nanny", tl: "/tl/serbisyo/yaya" },
+		"/hizmetler/yasli-bakici": { tr: "/hizmetler/yasli-bakici", en: "/en/services/caregiver", tl: "/tl/serbisyo/tagapag-alaga" },
+		"/hizmetler/temizlikci": { tr: "/hizmetler/temizlikci", en: "/en/services/cleaner", tl: "/tl/serbisyo/tagalinis" },
+		"/bilgi-defteri": { tr: "/bilgi-defteri", en: "/en/infobook", tl: "/tl/aklat-ng-kaalaman" },
+		"/gizlilik-politikasi": { tr: "/gizlilik-politikasi", en: "/en/privacy", tl: "/tl/privacy" },
+		"/kullanim-kosullari": { tr: "/kullanim-kosullari", en: "/en/terms", tl: "/tl/terms" },
+		"/tesekkurler": { tr: "/tesekkurler", en: "/en/thank-you", tl: "/tl/salamat" },
+	};
+
+	// Check for exact match first
+	if (pathMappings[basePath]) {
+		const mapped = pathMappings[basePath];
+		return {
+			tr: `${site}${mapped.tr}/`,
+			en: `${site}${mapped.en}/`,
+			tl: `${site}${mapped.tl}/`,
+			"x-default": `${site}${mapped.tr}/`
+		};
+	}
+
+	// Check for blog posts under /bilgi-defteri/
+	const blogMatch = basePath.match(/^\/bilgi-defteri\/(.+)$/);
+	if (blogMatch) {
+		const slug = blogMatch[1];
+		return {
+			tr: `${site}/bilgi-defteri/${slug}/`,
+			en: `${site}/en/infobook/${slug}/`,
+			tl: `${site}/tl/aklat-ng-kaalaman/${slug}/`,
+			"x-default": `${site}/bilgi-defteri/${slug}/`
+		};
+	}
+
+	// Check for service pages under /hizmetler/
+	const serviceMatch = basePath.match(/^\/hizmetler\/(.+)$/);
+	if (serviceMatch) {
+		const slug = serviceMatch[1];
+		// Map service slugs
+		const serviceSlugMap: Record<string, { en: string; tl: string }> = {
+			"cocuk-bakici": { en: "nanny", tl: "yaya" },
+			"yasli-bakici": { en: "caregiver", tl: "tagapag-alaga" },
+			"temizlikci": { en: "cleaner", tl: "tagalinis" },
+		};
+		const mapped = serviceSlugMap[slug];
+		if (mapped) {
+			return {
+				tr: `${site}/hizmetler/${slug}/`,
+				en: `${site}/en/services/${mapped.en}/`,
+				tl: `${site}/tl/serbisyo/${mapped.tl}/`,
+				"x-default": `${site}/hizmetler/${slug}/`
+			};
+		}
+	}
+
+	// Default: just prefix with locale
+	return {
+		tr: `${site}${basePath}/`,
+		en: `${site}/en${basePath}/`,
+		tl: `${site}/tl${basePath}/`,
+		"x-default": `${site}${basePath}/`
+	};
+}
+
+const hreflangUrls = getHreflangUrls(canonical);
 ---
 
 <!doctype html>
@@ -30,6 +209,12 @@ const currentLang = lang ?? Astro.currentLocale ?? "tr";
 		<meta name="generator" content={Astro.generator} />
 		<meta name="google-site-verification" content="HAsRrWKqeZB2lNi9isHAjhuG-BkT0IyS_9kwKM4BPZE" />
 		{canonical && <link rel="canonical" href={canonical} />}
+
+		<!-- Hreflang tags for SEO -->
+		<link rel="alternate" hreflang="tr" href={hreflangUrls.tr} />
+		<link rel="alternate" hreflang="en" href={hreflangUrls.en} />
+		<link rel="alternate" hreflang="tl" href={hreflangUrls.tl} />
+		<link rel="alternate" hreflang="x-default" href={hreflangUrls["x-default"]} />
 
 		<!-- Google Tag Manager -->
 		<script>
