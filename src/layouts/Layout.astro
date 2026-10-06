@@ -11,11 +11,19 @@ interface Props {
 	description: string;
 	currentPage: string;
 	canonical?: string;
+	additionalSchema?: Record<string, unknown>;
 	publishDate?: string;
 	modifiedDate?: string;
 }
 
-const { lang, title, description, currentPage, canonical } = Astro.props;
+const {
+	lang,
+	title,
+	description,
+	currentPage,
+	canonical,
+	additionalSchema
+} = Astro.props;
 
 const currentLang = lang ?? Astro.currentLocale ?? "tr";
 
@@ -26,7 +34,7 @@ const schema = {
 	"@context": "https://schema.org",
 	"@graph": [
 		{
-			"@type": "Organization",
+			"@type": ["Organization", "LocalBusiness"],
 			"@id": `${siteUrl}/#organization`,
 			"name": "Bondlio",
 			"url": `${siteUrl}/`,
@@ -93,7 +101,8 @@ const schema = {
 				"@id": `${siteUrl}/#organization`
 			},
 			"inLanguage": currentLang
-		}
+		},
+		...(additionalSchema ? [additionalSchema] : [])
 	]
 };
 

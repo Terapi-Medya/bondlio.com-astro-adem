@@ -38,6 +38,24 @@ const checks = [
             "Temel ilk yardım bilgisi ve acil durum farkındalığı aranır.",
     },
 ];
+
+const serviceSchema = {
+    "@type": "Service",
+    "@id": `${Astro.url.href}#service`,
+    "serviceType": "Yaşlı Bakıcı Hizmeti",
+    "name": "Yaşlı Bakıcı",
+    "description": "Aile büyükleriniz için sabırlı, deneyimli ve güvenilir yaşlı bakıcıları bulun.",
+    "provider": { "@id": "https://bondlio.com/#organization" },
+    "areaServed": [
+        { "@type": "Country", "name": "Türkiye" },
+        { "@type": "City", "name": "İstanbul" },
+        { "@type": "City", "name": "Ankara" },
+        { "@type": "City", "name": "İzmir" },
+        { "@type": "City", "name": "Antalya" },
+        { "@type": "City", "name": "Bursa" }
+    ],
+    "url": Astro.url.href
+};
 ---
 
 <Layout
@@ -45,6 +63,7 @@ const checks = [
     description="Aile büyükleriniz için sabırlı, deneyimli ve güvenilir yaşlı bakıcıları bulun. Bondlio ile yatılı, tam zamanlı veya esnek bakım desteğini keşfedin."
     currentPage="services.caregiver"
     canonical={Astro.url.href}
+    additionalSchema={serviceSchema}
 >
     <PageHeader
         title="Yaşlı Bakıcı"

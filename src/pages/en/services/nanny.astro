@@ -36,6 +36,24 @@ const checks = [
             "We look for foundational childcare and first-aid knowledge.",
     },
 ];
+
+const serviceSchema = {
+    "@type": "Service",
+    "@id": `${Astro.url.href}#service`,
+    "serviceType": "Nanny Service",
+    "name": "Nanny",
+    "description": "Carefully selected, trustworthy nannies.",
+    "provider": { "@id": "https://bondlio.com/#organization" },
+    "areaServed": [
+        { "@type": "Country", "name": "Türkiye" },
+        { "@type": "City", "name": "İstanbul" },
+        { "@type": "City", "name": "Ankara" },
+        { "@type": "City", "name": "İzmir" },
+        { "@type": "City", "name": "Antalya" },
+        { "@type": "City", "name": "Bursa" }
+    ],
+    "url": Astro.url.href
+};
 ---
 
 <Layout
@@ -43,6 +61,7 @@ const checks = [
     description="Carefully selected, trustworthy nannies."
     currentPage="services.nanny"
     canonical={Astro.url.href}
+    additionalSchema={serviceSchema}
 >
     <PageHeader
         title="Nanny"

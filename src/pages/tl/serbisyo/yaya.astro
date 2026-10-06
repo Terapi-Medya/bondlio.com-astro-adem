@@ -38,6 +38,24 @@ const checks = [
             "Naghahanap kami ng pundasyong kaalaman sa pangangalaga ng bata at first aid.",
     },
 ];
+
+const serviceSchema = {
+    "@type": "Service",
+    "@id": `${Astro.url.href}#service`,
+    "serviceType": "Serbisyo ng Yaya",
+    "name": "Yaya",
+    "description": "Maingat na pinili at mapagkakatiwalaang mga yaya.",
+    "provider": { "@id": "https://bondlio.com/#organization" },
+    "areaServed": [
+        { "@type": "Country", "name": "Türkiye" },
+        { "@type": "City", "name": "İstanbul" },
+        { "@type": "City", "name": "Ankara" },
+        { "@type": "City", "name": "İzmir" },
+        { "@type": "City", "name": "Antalya" },
+        { "@type": "City", "name": "Bursa" }
+    ],
+    "url": Astro.url.href
+};
 ---
 
 <Layout
@@ -45,6 +63,7 @@ const checks = [
     description="Maingat na pinili at mapagkakatiwalaang mga yaya."
     currentPage="services.nanny"
     canonical={Astro.url.href}
+    additionalSchema={serviceSchema}
 >
     <PageHeader
         title="Yaya"

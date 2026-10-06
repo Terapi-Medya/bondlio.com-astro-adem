@@ -36,6 +36,24 @@ const checks = [
         description: "Temel çocuk bakımı ve ilk yardım bilgisi aranır.",
     },
 ];
+
+const serviceSchema = {
+    "@type": "Service",
+    "@id": `${Astro.url.href}#service`,
+    "serviceType": "Çocuk Bakıcısı Hizmeti",
+    "name": "Çocuk Bakıcısı",
+    "description": "Çocuğunuz için deneyimli, güvenilir ve titizlikle değerlendirilen çocuk bakıcılarını bulun.",
+    "provider": { "@id": "https://bondlio.com/#organization" },
+    "areaServed": [
+        { "@type": "Country", "name": "Türkiye" },
+        { "@type": "City", "name": "İstanbul" },
+        { "@type": "City", "name": "Ankara" },
+        { "@type": "City", "name": "İzmir" },
+        { "@type": "City", "name": "Antalya" },
+        { "@type": "City", "name": "Bursa" }
+    ],
+    "url": Astro.url.href
+};
 ---
 
 <Layout
@@ -43,6 +61,7 @@ const checks = [
     description="Çocuğunuz için deneyimli, güvenilir ve titizlikle değerlendirilen bakıcıları keşfedin. Bondlio ile yatılı, tam zamanlı veya esnek çocuk bakıcısı bulun."
     currentPage="services.nanny"
     canonical={Astro.url.href}
+    additionalSchema={serviceSchema}
 >
     <PageHeader
         title="Çocuk Bakıcısı"
