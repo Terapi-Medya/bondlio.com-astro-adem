@@ -19,6 +19,84 @@ const { lang, title, description, currentPage, canonical } = Astro.props;
 
 const currentLang = lang ?? Astro.currentLocale ?? "tr";
 
+const siteUrl = "https://bondlio.com";
+const pageUrl = (canonical ?? Astro.url.href).replace(/#.*$/, "");
+
+const schema = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Organization",
+			"@id": `${siteUrl}/#organization`,
+			"name": "Bondlio",
+			"url": `${siteUrl}/`,
+			"logo": {
+				"@type": "ImageObject",
+				"url": `${siteUrl}/bondlio-logo-lightbg.webp`
+			},
+			"image": `${siteUrl}/bondlio-logo-lightbg.webp`,
+			"email": "info@bondlio.com",
+			"telephone": "+90 532 799 40 90",
+			"sameAs": [
+				"https://www.instagram.com/bondlio_international",
+				"https://www.facebook.com/people/Bondlio/61590389445745/"
+			],
+			"contactPoint": [
+				{
+					"@type": "ContactPoint",
+					"contactType": "customer service",
+					"telephone": "+90 532 799 40 90",
+					"availableLanguage": ["tr"]
+				},
+				{
+					"@type": "ContactPoint",
+					"contactType": "customer service",
+					"telephone": "+90 533 161 43 77",
+					"availableLanguage": ["tr", "en"]
+				},
+				{
+					"@type": "ContactPoint",
+					"contactType": "customer service",
+					"telephone": "+90 506 770 95 96",
+					"availableLanguage": ["en"]
+				}
+			],
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "Atatürk Blv, No:199, Kat:2, No:14",
+				"addressLocality": "Çankaya",
+				"addressRegion": "Ankara",
+				"addressCountry": "TR"
+			},
+			"hasMap": "https://maps.app.goo.gl/Dk3pHgTfxMXjLJnEA"
+		},
+		{
+			"@type": "WebSite",
+			"@id": `${siteUrl}/#website`,
+			"url": `${siteUrl}/`,
+			"name": "Bondlio",
+			"publisher": {
+				"@id": `${siteUrl}/#organization`
+			},
+			"inLanguage": currentLang
+		},
+		{
+			"@type": "WebPage",
+			"@id": `${pageUrl}#webpage`,
+			"url": pageUrl,
+			"name": title,
+			"description": description,
+			"isPartOf": {
+				"@id": `${siteUrl}/#website`
+			},
+			"about": {
+				"@id": `${siteUrl}/#organization`
+			},
+			"inLanguage": currentLang
+		}
+	]
+};
+
 // Generate hreflang URLs based on canonical URL
 function getHreflangUrls(canonicalUrl?: string) {
 	const site = "https://bondlio.com";
@@ -211,6 +289,7 @@ const hreflangUrls = getHreflangUrls(canonical);
 		<meta name="generator" content={Astro.generator} />
 		<meta name="google-site-verification" content="HAsRrWKqeZB2lNi9isHAjhuG-BkT0IyS_9kwKM4BPZE" />
 		{canonical && <link rel="canonical" href={canonical} />}
+		<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 
 		<!-- Hreflang tags for SEO -->
 		<link rel="alternate" hreflang="tr" href={hreflangUrls.tr} />
