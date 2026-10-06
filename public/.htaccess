@@ -1,0 +1,174 @@
+# =============================================================================
+# BONDLIO.COM - Apache .htaccess
+# SEO/GEO optimized for Astro static site (trailing slash URLs)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 1. WWW -> NON-WWW (301 Permanent Redirect)
+# -----------------------------------------------------------------------------
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.bondlio\.com$ [NC]
+RewriteRule ^(.*)$ https://bondlio.com/$1 [R=301,L]
+
+# -----------------------------------------------------------------------------
+# 2. HTTPS ENFORCEMENT (HSTS preload ready)
+# -----------------------------------------------------------------------------
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://bondlio.com/$1 [R=301,L]
+
+# -----------------------------------------------------------------------------
+# 3. TRAILING SLASH ENFORCEMENT (Astro default)
+#    Ensure all URLs end with / for consistent indexing
+# -----------------------------------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+# -----------------------------------------------------------------------------
+# 4. REMOVE .html EXTENSION (legacy support)
+#    Redirect /page.html -> /page/ (301)
+# -----------------------------------------------------------------------------
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^(.+?)\.html$ /$1/ [R=301,L,NC]
+
+# -----------------------------------------------------------------------------
+# 5. SERVE INDEX.HTML FOR DIRECTORIES (Astro default structure)
+# -----------------------------------------------------------------------------
+DirectoryIndex index.html
+
+# Redirect legacy /page.html -> /page/ (301) if directory with index.html exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^(.+)\.html$ /$1/ [R=301,L]
+
+# -----------------------------------------------------------------------------
+# 6. SECURITY HEADERS
+# -----------------------------------------------------------------------------
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # XSS Protection
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Permissions Policy (restrict sensitive APIs)
+    Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+
+    # HSTS (1 year, include subdomains, preload ready)
+    # Enable only after confirming HTTPS works perfectly
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # Remove server signature
+    Header unset Server
+    Header unset X-Powered-By
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# 7. COMPRESSION (DEFLATE/GZIP)
+# -----------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+    # Enable compression
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+    AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/json application/xml application/rss+xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE font/ttf font/otf font/woff font/woff2
+    AddOutputFilterByType DEFLATE image/svg+xml image/x-icon
+
+    # Handle legacy browsers
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+    # Don't compress already compressed files
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp|avif|woff2?|ttf|eot)$ no-gzip dont-vary
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# 8. BROTLI COMPRESSION (if available - better than gzip)
+# -----------------------------------------------------------------------------
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css
+    AddOutputFilterByType BROTLI_COMPRESS text/javascript application/javascript application/x-javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json application/xml application/rss+xml
+    AddOutputFilterByType BROTLI_COMPRESS application/xhtml+xml
+    AddOutputFilterByType BROTLI_COMPRESS font/ttf font/otf font/woff font/woff2
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# 9. CACHE CONTROL (Static assets - long term, HTML - short term)
+# -----------------------------------------------------------------------------
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # HTML - always revalidate
+    ExpiresByType text/html "access plus 0 seconds"
+    <FilesMatch "\.html$">
+        Header set Cache-Control "max-age=0, must-revalidate, public"
+    </FilesMatch>
+
+    # CSS/JS/Fonts - 1 year with versioning (hash-based filenames = immutable safe)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+
+    # Fonts - 1 year (usually versioned or stable)
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    <FilesMatch "\.(woff2?|ttf|otf|eot)$">
+        Header set Cache-Control "max-age=31536000, public, immutable"
+    </FilesMatch>
+
+    # Images - 1 year but NOT immutable (public/ images may update without filename change)
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    <FilesMatch "\.(jpe?g|png|webp|avif|svg|ico)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+# -----------------------------------------------------------------------------
+# 10. ETag REMOVAL (better caching with Cache-Control)
+# -----------------------------------------------------------------------------
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+# -----------------------------------------------------------------------------
+# 11. HOTLINK PROTECTION (optional - uncomment if needed)
+# -----------------------------------------------------------------------------
+# RewriteCond %{HTTP_REFERER} !^$
+# RewriteCond %{HTTP_REFERER} !^https?://(www\.)?bondlio\.com [NC]
+# RewriteRule \.(jpe?g|png|gif|webp|avif|svg)$ - [NC,F,L]
+
+# -----------------------------------------------------------------------------
+# 12. BLOCK BAD BOTS / SCRAPERS (basic) (şunlar isteğe göre eklenebilir ahrefsbot|semrushbot|)
+# -----------------------------------------------------------------------------
+RewriteCond %{HTTP_USER_AGENT} (mj12bot|dotbot|blexbot|seokicks|spbot|trendkitebot) [NC]
+RewriteRule .* - [F,L]
+
+# -----------------------------------------------------------------------------
+# 13. PREVENT DIRECTORY LISTING
+# -----------------------------------------------------------------------------
+Options -Indexes
+
+
+
+# =============================================================================
+# END
+# =============================================================================

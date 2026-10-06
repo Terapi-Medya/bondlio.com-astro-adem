@@ -9,6 +9,9 @@ import filipinliTenizlikci from "../../assets/filipinli-temizlikci.webp";
 const lang = Astro.currentLocale ?? "tr";
 const content = getLangContent(lang);
 
+publishDate: "2025-01-15"
+modifiedDate: "2026-10-06"
+
 const checks = [
     {
         title: "Sabıka Kaydı Kontrolü",
@@ -34,15 +37,35 @@ const checks = [
         description: "Adayın önceki işverenleriyle güven ilişkisi sorgulanır.",
     },
 ];
+
+const serviceSchema = {
+    "@type": "Service",
+    "@id": `${Astro.url.href}#service`,
+    "serviceType": "Ev ve Ofis Temizliği Hizmeti",
+    "name": "Temizlikçi",
+    "description": "Eviniz veya ofisiniz için güvenilir, deneyimli ve titizlikle değerlendirilen temizlikçileri bulun.",
+    "provider": { "@id": "https://bondlio.com/#organization" },
+    "areaServed": [
+        { "@type": "Country", "name": "Türkiye" },
+        { "@type": "City", "name": "İstanbul" },
+        { "@type": "City", "name": "Ankara" },
+        { "@type": "City", "name": "İzmir" },
+        { "@type": "City", "name": "Antalya" },
+        { "@type": "City", "name": "Bursa" }
+    ],
+    "url": Astro.url.href
+};
 ---
 
 <Layout
-    title="Temizlikçi Hizmeti | Bondlio"
-    description="Titizlikle seçilmiş, güvenilir temizlikçiler."
+    title="Temizlikçi Hizmeti | Güvenilir Ev ve Ofis Temizliği | Bondlio"
+    description="Eviniz veya ofisiniz için güvenilir, deneyimli ve titizlikle değerlendirilen temizlikçileri bulun. Bondlio ile ihtiyaçlarınıza uygun ofis ve ev temizliği hizmetini keşfedin."
     currentPage="services.cleaner"
+    canonical={Astro.url.href}
+    additionalSchema={serviceSchema}
 >
     <PageHeader
-        title="Temizlikçi"
+        title="Temizlikçi — Ev ve Ofis Temizliği"
         description="Ev ya da ofis — ihtiyacınıza en uygun düzende, titizlikle seçilmiş temizlikçiler."
     />
 
@@ -83,7 +106,8 @@ const checks = [
             >
                 <img
                     src={filipinliTenizlikci.src}
-                    alt="Filipinli Temizlikçi güvenilir"
+                    alt="Filipinli Güvenilir Ev ve Ofis Temizliği"
+                    title="Ev ve Ofis Temizliği"
                     class="w-full h-full object-cover"
                 />
             </div>

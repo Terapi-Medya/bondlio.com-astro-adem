@@ -9,12 +9,16 @@ const posts = allPosts
     .sort(
         (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
     );
+
+publishDate: "2025-01-15"
+modifiedDate: "2026-01-15"
 ---
 
 <Layout
     title="InfoBook | Bondlio"
     description="Everything you'd want to know about care and home services."
     currentPage="infobook"
+    canonical={Astro.url.href}
 >
     <PageHeader
         title="InfoBook"
@@ -44,7 +48,7 @@ const posts = allPosts
                             })}
                         </time>
                         <h2 class="mt-2 text-xl font-display font-semibold text-bondlio-charcoal">
-                            {post.data.title}
+                            {post.data.h1 ?? post.data.title}
                         </h2>
                         <p class="mt-2 text-bondlio-gray">
                             {post.data.description}

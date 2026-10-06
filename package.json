@@ -8,14 +8,18 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "node -e \"const fs=require('fs'); const files=fs.readdirSync('dist').filter(f=>f.startsWith('sitemap-') && f.endsWith('.xml') && !f.includes('index')); if(files.length) fs.copyFileSync('dist/'+files[0], 'dist/sitemap.xml');\"",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.5",
+    "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.1.3",
+    "glob": "^13.0.6",
+    "gray-matter": "^4.0.3",
     "tailwindcss": "^4.3.3"
   }
 }

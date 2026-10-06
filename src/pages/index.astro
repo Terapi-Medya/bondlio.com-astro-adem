@@ -7,15 +7,29 @@ import HowItWorks from "../components/HowItWorks.astro";
 import ServicesPreview from "../components/ServicesPreview.astro";
 import AboutTeaser from "../components/AboutTeaser.astro";
 import BlogPreview from "../components/BlogPreview.astro";
+
+publishDate: "2025-01-15"
+modifiedDate: "2026-10-05"
 ---
 
 <Layout
-	title="Bondlio | Güvenilir Dadı, Bakıcı ve Ev Temizlikçi Platformu"
-	description="Doğru kişiyi bulmak güven ister. Bondlio, hem aileleri hem çalışanları özenle değerlendirerek, yasalara tam uyumlu şekilde güvenli bir eşleşme sağlar."
+	title="Güvenilir Bakıcı, Dadı ve Ev Temizlikçi Platformu | Bondlio"
+	description="Doğru kişiyi bulmak güven ister. Bondlio, bakıcı ve ev hizmetlerinde hem aileleri hem çalışanları özenle değerlendirir, yasalara uyumlu, güvenli eşleşme sağlar."
 	currentPage="home"
+	canonical={Astro.url.href}
 >
-	<HeroSlider />
+	<HeroSlider />	
 	<ServicesPreview />
+	<section class="page-content-container py-10">
+		<div class="max-w-2xl">
+			<h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-bondlio-charcoal leading-tight">
+				Çocuk Bakıcısı, Dadı ve Ev Temizlikçisi Platformu
+				<span class="block mt-3 text-lg md:text-xl font-normal text-bondlio-gray font-body">
+					Aileniz için güvenilir bakıcı ve gündelik ev hizmetlerine ulaşmanın yasal yolu <span class="text-bondlio-orange">| Bondlio</span>
+				</span>
+			</h1>
+		</div>
+	</section>
 	<HomeForms />
 	<HowItWorks />
 	<AboutTeaser />

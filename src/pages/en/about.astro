@@ -3,12 +3,16 @@ import Layout from "../../layouts/Layout.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import AboutIntro from "../../components/AboutIntro.astro";
 import HomeForms from "../../components/HomeForms.astro";
+
+publishDate: "2025-01-15"
+modifiedDate: "2026-01-15"
 ---
 
 <Layout
     title="About Us | Bondlio"
     description="Bondlio's story and values."
     currentPage="about"
+    canonical={Astro.url.href}
 >
     <PageHeader title="About Us" description="Bondlio's story and values." />
     <AboutIntro />

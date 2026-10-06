@@ -7,12 +7,16 @@ import { getServices } from "../../data/services";
 const lang = Astro.currentLocale ?? "tr";
 const content = getLangContent(lang);
 const services = getServices(content);
+
+publishDate: "2025-01-15"
+modifiedDate: "2026-10-06"
 ---
 
 <Layout
-    title="Hizmetlerimiz | Bondlio"
-    description="Çocuk bakıcı, yaşlı bakıcı ve temizlik hizmetlerimiz."
+    title="Hizmetlerimiz | Bakıcı ve Ev Hizmetleri | Bondlio"
+    description="Çocuk bakıcısı, yaşlı bakıcısı ve temizlikçi hizmetleri için güvenilir adaylar... İstanbul, Ankara, İzmir, Antalya, Bursa'da Bondlio ile ihtiyacınıza uygun adayı bulun."
     currentPage="services.index"
+    canonical={Astro.url.href}
 >
     <PageHeader
         title="Hizmetlerimiz"

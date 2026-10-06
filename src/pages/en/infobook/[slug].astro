@@ -18,12 +18,30 @@ const content = getLangContent(lang);
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const articleSchema = {
+    "@type": "Article",
+    "@id": `${Astro.url.href}#article`,
+    "headline": post.data.title,
+    "description": post.data.description,
+    "image": new URL(post.data.coverImage.src, "https://bondlio.com").href,
+    "datePublished": post.data.publishDate.toISOString(),
+    "dateModified": (post.data.modifiedDate ?? post.data.publishDate).toISOString(),
+    "author": { "@id": "https://bondlio.com/#organization" },
+    "publisher": { "@id": "https://bondlio.com/#organization" },
+    "mainEntityOfPage": Astro.url.href,
+    "inLanguage": lang
+};
 ---
 
 <Layout
     title={`${post.data.title} | Bondlio`}
     description={post.data.description}
     currentPage="infobook"
+    canonical={Astro.url.href}
+    publishDate={post.data.publishDate.toISOString().split('T')[0]}
+    modifiedDate={post.data.modifiedDate ? post.data.modifiedDate.toISOString().split('T')[0] : post.data.publishDate.toISOString().split('T')[0]}
+    additionalSchema={articleSchema}
 >
     <section class="page-content-container pt-20">
         <div class="max-w-3xl mx-auto pb-8 border-b border-bondlio-beige">
@@ -46,7 +64,7 @@ const { Content } = await render(post);
             <h1
                 class="mt-2 text-3xl md:text-4xl font-display font-semibold text-bondlio-charcoal"
             >
-                {post.data.title}
+                {post.data.h1 ?? post.data.title}
             </h1>
         </div>
     </section>

@@ -7,12 +7,16 @@ import ServicesPreview from "../../components/ServicesPreview.astro";
 import AboutTeaser from "../../components/AboutTeaser.astro";
 import BlogPreview from "../../components/BlogPreview.astro";
 import ValueProps from "../../components/ValueProps.astro";
+
+publishDate: "2025-01-15"
+modifiedDate: "2026-01-15"
 ---
 
 <Layout
     title="Bondlio | Carefully Selected Nannies, Caregivers, Cleaners"
     description="Finding the right person takes trust. Bondlio carefully evaluates both families and workers, ensuring a safe match in full legal compliance."
     currentPage="home"
+    canonical={Astro.url.href}
 >
     <HeroSlider />
     <ServicesPreview />

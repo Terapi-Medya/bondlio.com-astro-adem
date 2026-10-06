@@ -7,12 +7,16 @@ import { getServices } from "../../../data/services";
 const lang = Astro.currentLocale ?? "tr";
 const content = getLangContent(lang);
 const services = getServices(content);
+
+publishDate: "2025-01-15"
+modifiedDate: "2026-01-15"
 ---
 
 <Layout
     title="Services | Bondlio"
     description="Childcare, elder care, and cleaning services."
     currentPage="services.index"
+    canonical={Astro.url.href}
 >
     <PageHeader
         title="Services"

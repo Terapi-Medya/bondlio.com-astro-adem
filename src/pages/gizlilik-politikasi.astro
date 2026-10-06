@@ -1,12 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHeader from "../components/PageHeader.astro";
+
+publishDate: "2025-01-15"
+modifiedDate: "2026-01-15"
 ---
 
 <Layout
     title="Gizlilik Politikası | Bondlio"
     description="Bondlio gizlilik politikası ve kişisel verilerin korunması hakkında bilgiler."
     currentPage="privacy"
+    canonical={Astro.url.href}
 >
     <PageHeader
         title="Gizlilik Politikası"

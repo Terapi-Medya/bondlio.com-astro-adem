@@ -4,12 +4,16 @@ import { getLangContent } from "../../i18n";
 
 const lang = Astro.currentLocale ?? "tr";
 const content = getLangContent(lang);
+
+publishDate: "2025-01-15"
+modifiedDate: "2026-01-15"
 ---
 
 <Layout
     title="Salamat | Bondlio"
     description="Naabot na namin ang inyong mensahe."
     currentPage="home"
+    canonical={Astro.url.href}
 >
     <section class="page-content-container py-24 text-center">
         <div class="max-w-xl mx-auto">

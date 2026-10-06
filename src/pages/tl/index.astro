@@ -7,12 +7,16 @@ import ServicesPreview from "../../components/ServicesPreview.astro";
 import AboutTeaser from "../../components/AboutTeaser.astro";
 import BlogPreview from "../../components/BlogPreview.astro";
 import ValueProps from "../../components/ValueProps.astro";
+
+publishDate: "2025-01-15"
+modifiedDate: "2026-01-15"
 ---
 
 <Layout
     title="Bondlio | Maingat na Piniling mga Yaya, Tagapag-alaga, at Tagalinis"
     description="Ang paghahanap ng tamang tao ay nangangailangan ng tiwala. Maingat na sinusuri ng Bondlio ang parehong mga pamilya at manggagawa, tinitiyak ang isang ligtas na pagtutugma sa buong pagsunod sa batas."
     currentPage="home"
+    canonical={Astro.url.href}
 >
     <HeroSlider />
     <ServicesPreview />
