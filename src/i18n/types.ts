@@ -91,10 +91,12 @@ export interface Translation {
   contactInfo: {
     phone: string;
     phoneDisplay: string;
-    whatsapp: string;
-    whatsappDisplay: string;
-    whatsapp2?: string;
-    whatsappDisplay2?: string;
+    whatsapp1: string;
+    whatsappDisplay1: string;
+    whatsapp2: string;
+    whatsappDisplay2: string;
+    whatsapp3: string;
+    whatsappDisplay3: string;
   };
 
   serviceCta: {
