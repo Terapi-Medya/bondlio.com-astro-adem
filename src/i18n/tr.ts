@@ -21,8 +21,8 @@ export const tr: Translation = {
         about: "Hakkında",
         services: "Hizmetler",
         servicesDropdown: {
-            nanny: "Çocuk Bakıcı",
-            caregiver: "Yaşlı Bakıcı",
+            nanny: "Çocuk Bakıcısı",
+            caregiver: "Yaşlı Bakıcısı",
             cleaner: "Temizlikçi",
         },
         infobook: "Bilgi Defteri",
