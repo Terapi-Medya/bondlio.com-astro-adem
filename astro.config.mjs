@@ -7,6 +7,10 @@ import { readFileSync } from 'fs';
 import mdx from '@astrojs/mdx';
 
 // Simple frontmatter parser for .astro files (extracts key: value from YAML frontmatter block)
+/**
+ * @param {string} content
+ * @returns {{ publishDate?: string, modifiedDate?: string, lang?: string }}
+ */
 function parseAstroFrontmatter(content) {
   // Remove BOM if present
   if (content.charCodeAt(0) === 0xFEFF) {
@@ -18,6 +22,7 @@ function parseAstroFrontmatter(content) {
   if (!match) return {};
   
   const frontmatter = match[1];
+  /** @type {{ publishDate?: string, modifiedDate?: string, lang?: string }} */
   const data = {};
   
   // Find all key: value patterns in the frontmatter (quoted or unquoted)
@@ -32,7 +37,7 @@ function parseAstroFrontmatter(content) {
       const key = match[1];
       // Group 2 = double-quoted, Group 3 = single-quoted, Group 4 = unquoted
       const value = match[2] ?? match[3] ?? match[4];
-      if (key === 'publishDate' || key === 'modifiedDate') {
+      if (key === 'publishDate' || key === 'modifiedDate' || key === 'lang') {
         data[key] = value;
       }
     }
@@ -43,6 +48,7 @@ function parseAstroFrontmatter(content) {
 
 // Build lastmod map from frontmatter at build time
 async function buildLastmodMap() {
+  /** @type {Map<string, string>} */
   const map = new Map();
 
   // 1. Read all .astro pages (excluding dynamic [slug] pages)
