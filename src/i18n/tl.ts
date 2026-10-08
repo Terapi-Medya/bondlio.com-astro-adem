@@ -135,7 +135,7 @@ export const tl: Translation = {
         whatsapp2: "905331614377",
         whatsappDisplay2: "+90 (533) 161 43 77 (English)",
         whatsapp3: "905326499940",
-        whatsappDisplay3: "+90 (532) 649 99 40 (Turkish)",
+        whatsappDisplay3: "+90 (532) 649 99 40 (Türkçe)",
     },
 
     serviceCta: {
