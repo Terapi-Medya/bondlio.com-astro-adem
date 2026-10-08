@@ -101,17 +101,6 @@ async function buildLastmodMap() {
       // Use modifiedDate if available, otherwise publishDate
       const date = data.modifiedDate || data.publishDate;
       map.set(url, date);
-      
-      // Also add i18n fallback variants
-      const allLangs = ['tr', 'en', 'tl'];
-      for (const fallbackLang of allLangs) {
-        if (fallbackLang !== lang) {
-          const fallbackBase = fallbackLang === 'tr' ? '/bilgi-defteri' : 
-                               fallbackLang === 'en' ? '/en/infobook' : '/tl/aklat-ng-kaalaman';
-          const fallbackUrl = `https://bondlio.com${fallbackBase}/${slug}/`;
-          map.set(fallbackUrl, date);
-        }
-      }
     }
   }
 
