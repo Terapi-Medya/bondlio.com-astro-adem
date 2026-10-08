@@ -8,8 +8,8 @@ import HomeForms from "../components/HomeForms.astro";
 const lang = Astro.currentLocale ?? "tr";
 const content = getLangContent(lang);
 
-publishDate: "2025-01-15"
-modifiedDate: "2026-10-06"
+publishDate: "2025-01-15";
+modifiedDate: "2026-10-06";
 ---
 
 <Layout
@@ -80,7 +80,7 @@ modifiedDate: "2026-10-06"
                             href={`tel:${content.contactInfo.phone}`}
                             class="text-bondlio-gray hover:text-bondlio-orange transition-colors duration-150"
                         >
-                            {content.contactInfo.phoneDisplay} - Türkçe
+                            {content.contactInfo.phoneDisplay}
                         </a>
                     </div>
                     <div>
@@ -90,12 +90,12 @@ modifiedDate: "2026-10-06"
                             WhatsApp
                         </h3>
                         <a
-                            href={`https://wa.me/${content.contactInfo.whatsapp}`}
+                            href={`https://wa.me/${content.contactInfo.whatsapp1}`}
                             target="_blank"
                             rel="noreferrer"
                             class="text-bondlio-gray hover:text-bondlio-orange transition-colors duration-150"
                         >
-                            {content.contactInfo.whatsappDisplay} - Türkçe, English
+                            {content.contactInfo.whatsappDisplay1}
                         </a>
                         <br />
                         <a
@@ -104,7 +104,16 @@ modifiedDate: "2026-10-06"
                             rel="noreferrer"
                             class="text-bondlio-gray hover:text-bondlio-orange transition-colors duration-150"
                         >
-                            {content.contactInfo.whatsappDisplay2} - English
+                            {content.contactInfo.whatsappDisplay2}
+                        </a>
+                        <br />
+                        <a
+                            href={`https://wa.me/${content.contactInfo.whatsapp3}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            class="text-bondlio-gray hover:text-bondlio-orange transition-colors duration-150"
+                        >
+                            {content.contactInfo.whatsappDisplay3}
                         </a>
                     </div>
                     <div>
@@ -118,7 +127,7 @@ modifiedDate: "2026-10-06"
                                 href="https://maps.app.goo.gl/Dk3pHgTfxMXjLJnEA"
                                 target="_blank"
                                 >Atatürk Blv, No:199, Kat:2, No:14,<br />
-                                Çankaya/Ankara
+                                Çankaya / Ankara, Türkiye
                             </a>
                         </p>
                     </div>

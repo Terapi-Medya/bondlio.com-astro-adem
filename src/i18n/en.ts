@@ -128,13 +128,13 @@ export const en: Translation = {
 
     contactInfo: {
         phone: "+905067709596",
-        phoneDisplay: "+90 (506) 770 95 96 (EN)",
+        phoneDisplay: "+90 (506) 770 95 96 (English)",
         whatsapp1: "905067709596",
-        whatsappDisplay1: "+90 (506) 770 95 96 (EN)",
+        whatsappDisplay1: "+90 (506) 770 95 96 (English)",
         whatsapp2: "905331614377",
-        whatsappDisplay2: "+90 (533) 161 43 77 (TR / EN)",
-        whatsapp3: "905327994090",
-        whatsappDisplay3: "+90 (532) 799 40 90 (TR)",
+        whatsappDisplay2: "+90 (533) 161 43 77 (English, Türkçe)",
+        whatsapp3: "905326499940",
+        whatsappDisplay3: "+90 (532) 649 99 40 (Türkçe)",
     },
 
     serviceCta: {

@@ -22,15 +22,17 @@ const { Content } = await render(post);
 const articleSchema = {
     "@type": "Article",
     "@id": `${Astro.url.href}#article`,
-    "headline": post.data.title,
-    "description": post.data.description,
-    "image": new URL(post.data.coverImage.src, "https://bondlio.com").href,
-    "datePublished": post.data.publishDate.toISOString(),
-    "dateModified": (post.data.modifiedDate ?? post.data.publishDate).toISOString(),
-    "author": { "@id": "https://bondlio.com/#organization" },
-    "publisher": { "@id": "https://bondlio.com/#organization" },
-    "mainEntityOfPage": Astro.url.href,
-    "inLanguage": lang
+    headline: post.data.title,
+    description: post.data.description,
+    image: new URL(post.data.coverImage.src, "https://bondlio.com").href,
+    datePublished: post.data.publishDate.toISOString(),
+    dateModified: (
+        post.data.modifiedDate ?? post.data.publishDate
+    ).toISOString(),
+    author: { "@id": "https://bondlio.com/#organization" },
+    publisher: { "@id": "https://bondlio.com/#organization" },
+    mainEntityOfPage: Astro.url.href,
+    inLanguage: lang,
 };
 ---
 
@@ -39,8 +41,10 @@ const articleSchema = {
     description={post.data.description}
     currentPage="infobook"
     canonical={Astro.url.href}
-    publishDate={post.data.publishDate.toISOString().split('T')[0]}
-    modifiedDate={post.data.modifiedDate ? post.data.modifiedDate.toISOString().split('T')[0] : post.data.publishDate.toISOString().split('T')[0]}
+    publishDate={post.data.publishDate.toISOString().split("T")[0]}
+    modifiedDate={post.data.modifiedDate
+        ? post.data.modifiedDate.toISOString().split("T")[0]
+        : post.data.publishDate.toISOString().split("T")[0]}
     additionalSchema={articleSchema}
 >
     <section class="page-content-container pt-20">
@@ -90,7 +94,7 @@ const articleSchema = {
             </p>
             <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                    href={`https://wa.me/${content.contactInfo.whatsapp}`}
+                    href={`https://wa.me/${content.contactInfo.whatsapp1}`}
                     target="_blank"
                     rel="noreferrer"
                     class="inline-flex items-center justify-center
