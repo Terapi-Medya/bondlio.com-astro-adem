@@ -1,10 +1,14 @@
 ---
+import { getLangContent } from "../i18n";
+
 interface Props {
     text?: string;
 }
 
 const { text = "Sorularınız mı var? Size yardımcı olmak isteriz." } =
     Astro.props;
+
+const content = getLangContent(Astro.currentLocale ?? "tr");
 ---
 
 <div
@@ -16,7 +20,7 @@ const { text = "Sorularınız mı var? Size yardımcı olmak isteriz." } =
         {text}
     </p>
     <a
-        href="https://wa.me/905331614377"
+        href={`https://wa.me/${content.contactInfo.whatsapp1}`}
         target="_blank"
         rel="noreferrer"
         class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-whatsapp-green text-white font-display font-semibold rounded-lg hover:bg-whatsapp-green-dark transition-colors duration-150"
