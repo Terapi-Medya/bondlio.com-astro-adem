@@ -8,8 +8,8 @@ import filipinoCareGiver from "../../../assets/filipinli-yasli-bakici.webp";
 const lang = Astro.currentLocale ?? "tr";
 const content = getLangContent(lang);
 
-publishDate: "2025-01-15"
-modifiedDate: "2026-01-15"
+publishDate: "2025-01-15";
+modifiedDate: "2026-01-15";
 
 const checks = [
     {
@@ -42,19 +42,19 @@ const checks = [
 const serviceSchema = {
     "@type": "Service",
     "@id": `${Astro.url.href}#service`,
-    "serviceType": "Serbisyo ng Tagapag-alaga",
-    "name": "Tagapag-alaga",
-    "description": "Maingat na pinili at mapagkakatiwalaang mga tagapag-alaga.",
-    "provider": { "@id": "https://bondlio.com/#organization" },
-    "areaServed": [
-        { "@type": "Country", "name": "Türkiye" },
-        { "@type": "City", "name": "İstanbul" },
-        { "@type": "City", "name": "Ankara" },
-        { "@type": "City", "name": "İzmir" },
-        { "@type": "City", "name": "Antalya" },
-        { "@type": "City", "name": "Bursa" }
+    serviceType: "Serbisyo ng Tagapag-alaga",
+    name: "Tagapag-alaga",
+    description: "Maingat na pinili at mapagkakatiwalaang mga tagapag-alaga.",
+    provider: { "@id": "https://bondlio.com/#organization" },
+    areaServed: [
+        { "@type": "Country", name: "Türkiye" },
+        { "@type": "City", name: "İstanbul" },
+        { "@type": "City", name: "Ankara" },
+        { "@type": "City", name: "İzmir" },
+        { "@type": "City", name: "Antalya" },
+        { "@type": "City", name: "Bursa" },
     ],
-    "url": Astro.url.href
+    url: Astro.url.href,
 };
 ---
 
@@ -67,7 +67,7 @@ const serviceSchema = {
 >
     <PageHeader
         title="Tagapag-alaga"
-        description="Full-time, live-in, or flexible — caregivers carefully selected to fit your family's needs."
+        description="Buong-panahong serbisyo, paninirahan sa tahanan, o nababagong iskedyul — mga tagapag-alagang maingat na pinipili upang tumugon sa pangangailangan ng inyong pamilya."
     />
 
     <section class="page-content-container py-10">
