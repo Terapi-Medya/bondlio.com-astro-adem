@@ -100,7 +100,7 @@ export const en: Translation = {
                 description: "Families and workers don't always share the same values or expectations. We don't see this as an obstacle, but as the basis for matching — we try to understand who is the best fit for whom.",
             },
             {
-                title: "We may err, but we don't run.",
+                title: "We may err, but we don't quit.",
                 description: "No system is perfect. When something goes wrong, we promise to work on resolving the issue as quickly as possible.",
             },
             {

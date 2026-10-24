@@ -101,7 +101,7 @@ export const tl: Translation = {
                 description: "Ang mga pamilya at manggagawa ay hindi laging nagbabahagi ng parehong mga halaga o inaasahan. Hindi namin ito nakikita bilang hadlang, kundi bilang pundasyon ng pagtutugma — sinusubukan naming malaman kung sino ang pinakamahusay na katugma para kanino.",
             },
             {
-                title: "Maaaring magkamali, pero hindi kami tatakbo.",
+                title: "Maaaring magkamali, pero hindi kami susuko.",
                 description: "Walang sistema ang perpekto. Kapag may hindi naging maayos, nangangako kaming magsisikap na lutasin ang isyu sa lalong madaling panahon.",
             },
             {
