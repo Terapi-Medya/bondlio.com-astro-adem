@@ -8,8 +8,8 @@ import filipinoCareGiver from "../../../assets/filipinli-yasli-bakici.webp";
 const lang = Astro.currentLocale ?? "tr";
 const content = getLangContent(lang);
 
-publishDate: "2025-01-15"
-modifiedDate: "2026-01-15"
+publishDate: "2025-01-15";
+modifiedDate: "2026-01-15";
 
 const checks = [
     {
@@ -41,19 +41,19 @@ const checks = [
 const serviceSchema = {
     "@type": "Service",
     "@id": `${Astro.url.href}#service`,
-    "serviceType": "Caregiver Service",
-    "name": "Caregiver",
-    "description": "Carefully selected, trustworthy senior caregivers.",
-    "provider": { "@id": "https://bondlio.com/#organization" },
-    "areaServed": [
-        { "@type": "Country", "name": "Türkiye" },
-        { "@type": "City", "name": "İstanbul" },
-        { "@type": "City", "name": "Ankara" },
-        { "@type": "City", "name": "İzmir" },
-        { "@type": "City", "name": "Antalya" },
-        { "@type": "City", "name": "Bursa" }
+    serviceType: "Caregiver Service",
+    name: "Caregiver",
+    description: "Carefully selected, trustworthy senior caregivers.",
+    provider: { "@id": "https://bondlio.com/#organization" },
+    areaServed: [
+        { "@type": "Country", name: "Türkiye" },
+        { "@type": "City", name: "İstanbul" },
+        { "@type": "City", name: "Ankara" },
+        { "@type": "City", name: "İzmir" },
+        { "@type": "City", name: "Antalya" },
+        { "@type": "City", name: "Bursa" },
     ],
-    "url": Astro.url.href
+    url: Astro.url.href,
 };
 ---
 
@@ -90,8 +90,8 @@ const serviceSchema = {
                     by their documents, but by their patience, approach, and how well
                     they will fit into your family. We don't leave you in the dark
                     during the process; our pricing is transparent, our communication
-                    is clear. Because we know: this is not about an object, <strong
-                        >this is about a person, and a family.</strong
+                    is clear. Because we know: this is not just about an object, <strong
+                        >this is about a person, a family, and a home.</strong
                     >
                 </p>
                 <p class="mt-6 text-lg text-bondlio-gray">
