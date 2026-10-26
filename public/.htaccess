@@ -34,6 +34,13 @@ RewriteRule ^index-en\.html$ /en/ [R=301,L,NC]
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
 RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L,NC]
 
+# Dead-end targets of the old broken rules (/index/, /index.html/,
+# /index-en.html/, /page.html/) still cached by browsers and crawlers
+RewriteRule ^index-en\.html/$ /en/ [R=301,L,NC]
+RewriteRule ^index(?:\.html)?/$ / [R=301,L,NC]
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^(.+)\.html/$ /$1/ [R=301,L,NC]
+
 # -----------------------------------------------------------------------------
 # 3. TRAILING SLASH ENFORCEMENT (Astro default)
 #    Ensure all URLs end with / for consistent indexing
