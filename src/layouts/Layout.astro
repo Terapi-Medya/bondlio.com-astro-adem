@@ -18,6 +18,8 @@ interface Props {
 	additionalSchema?: SchemaObject | SchemaObject[];
 	publishDate?: string;
 	modifiedDate?: string;
+	// Explicit hreflang URLs per language (e.g. blog posts with different slugs per language)
+	alternates?: Partial<Record<"tr" | "en" | "tl", string>>;
 }
 
 const {
@@ -26,7 +28,8 @@ const {
 	description,
 	currentPage,
 	canonical,
-	additionalSchema
+	additionalSchema,
+	alternates
 } = Astro.props;
 
 const currentLang = lang ?? Astro.currentLocale ?? "tr";
@@ -224,6 +227,16 @@ function getHreflangUrls(canonicalUrl?: string) {
 	// Ensure basePath starts with /
 	if (!basePath.startsWith("/")) basePath = "/" + basePath;
 
+	// Locale home pages (/en/, /tl/) map back to the root
+	if (basePath === "/") {
+		return {
+			tr: `${site}/`,
+			en: `${site}/en/`,
+			tl: `${site}/tl/`,
+			"x-default": `${site}/`
+		};
+	}
+
 	// Special path mappings for different locales
 	const pathMappings: Record<string, { tr: string; en: string; tl: string }> = {
 		"/hakkinda": { tr: "/hakkinda", en: "/en/about", tl: "/tl/tungkol-sa-amin" },
@@ -291,7 +304,9 @@ function getHreflangUrls(canonicalUrl?: string) {
 	};
 }
 
-const hreflangUrls = getHreflangUrls(canonical);
+const hreflangUrls: Partial<Record<"tr" | "en" | "tl" | "x-default", string>> = alternates
+	? { ...alternates, "x-default": alternates.tr ?? pageUrl }
+	: getHreflangUrls(canonical);
 ---
 
 <!doctype html>
@@ -309,10 +324,10 @@ const hreflangUrls = getHreflangUrls(canonical);
 		<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 
 		<!-- Hreflang tags for SEO -->
-		<link rel="alternate" hreflang="tr" href={hreflangUrls.tr} />
-		<link rel="alternate" hreflang="en" href={hreflangUrls.en} />
-		<link rel="alternate" hreflang="tl" href={hreflangUrls.tl} />
-		<link rel="alternate" hreflang="x-default" href={hreflangUrls["x-default"]} />
+		{hreflangUrls.tr && <link rel="alternate" hreflang="tr" href={hreflangUrls.tr} />}
+		{hreflangUrls.en && <link rel="alternate" hreflang="en" href={hreflangUrls.en} />}
+		{hreflangUrls.tl && <link rel="alternate" hreflang="tl" href={hreflangUrls.tl} />}
+		{hreflangUrls["x-default"] && <link rel="alternate" hreflang="x-default" href={hreflangUrls["x-default"]} />}
 
 		<!-- Google Tag Manager -->
 		<script>

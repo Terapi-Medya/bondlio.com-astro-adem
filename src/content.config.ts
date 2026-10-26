@@ -11,6 +11,8 @@ const blog = defineCollection({
         modifiedDate: z.date().optional(),
         lang: z.enum(["tr", "en", "tl"]),
         category: z.enum(["nanny", "caregiver", "cleaner", "general"]),
+        // Same value on every language version of a post (used for hreflang)
+        translationKey: z.string().optional(),
         coverImage: image(),
     }),
 });

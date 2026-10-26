@@ -13,6 +13,7 @@ export async function getStaticPaths() {
 
 import { getLangContent } from "../../../i18n";
 import { getFaqSchema } from "../../../utils/blogSchema";
+import { getBlogAlternates } from "../../../utils/blogAlternates";
 
 const lang = Astro.currentLocale ?? "tr";
 const content = getLangContent(lang);
@@ -20,6 +21,7 @@ const content = getLangContent(lang);
 const { post } = Astro.props;
 const { Content } = await render(post);
 const faqSchema = getFaqSchema(post, Astro.url.href);
+const alternates = await getBlogAlternates(post);
 
 const articleSchema = {
     "@type": "Article",
@@ -43,6 +45,7 @@ const articleSchema = {
     description={post.data.description}
     currentPage="infobook"
     canonical={Astro.url.href}
+    alternates={alternates}
     publishDate={post.data.publishDate.toISOString().split("T")[0]}
     modifiedDate={post.data.modifiedDate
         ? post.data.modifiedDate.toISOString().split("T")[0]

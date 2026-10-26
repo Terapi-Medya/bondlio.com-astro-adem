@@ -17,11 +17,31 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://bondlio.com/$1 [R=301,L]
 
 # -----------------------------------------------------------------------------
+# 2b. LEGACY / WRONG-LOCALE URLS (301) - must run before trailing slash rule
+#     Blog posts used to be served under every locale prefix and old hreflang
+#     tags pointed to the same slug in other locales; send each slug to the
+#     post's real URL.
+# -----------------------------------------------------------------------------
+RewriteRule ^(?:en/infobook|tl/aklat-ng-kaalaman)/(filipinli-bakici|neden-filipinli-bakici-tercih-ediliyor|turkiyede-filipinli-bakici-calistirma-rehberi-sureci)/?$ /bilgi-defteri/$1/ [R=301,L]
+RewriteRule ^(?:bilgi-defteri|tl/aklat-ng-kaalaman)/(filipino-nanny-caregiver-salary-legal-process-in-turkey|hiring-filipino-caregivers-nanny-in-turkey|why-filipino-caregivers-are-preferred-so-popular)/?$ /en/infobook/$1/ [R=301,L]
+RewriteRule ^(?:bilgi-defteri|en/infobook)/(yaya-paghuka-in-turkey|pagkuha-ng-tagapag-alagang-pilipino-sa-turkey|bakit-mahalaga-ang-mga-yaya-pilipino)/?$ /tl/aklat-ng-kaalaman/$1/ [R=301,L]
+
+# Old site's English home page
+RewriteRule ^index-en\.html$ /en/ [R=301,L,NC]
+
+# /index.html -> /, /dir/index.html -> /dir/ (THE_REQUEST check avoids looping
+# on Apache's internal DirectoryIndex request)
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ /$1 [R=301,L,NC]
+
+# -----------------------------------------------------------------------------
 # 3. TRAILING SLASH ENFORCEMENT (Astro default)
 #    Ensure all URLs end with / for consistent indexing
 # -----------------------------------------------------------------------------
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !(.*)/$
+# .html URLs are handled by section 4 (otherwise /page.html -> /page.html/ 404)
+RewriteCond %{REQUEST_URI} !\.html$ [NC]
 RewriteRule ^(.*)$ /$1/ [R=301,L]
 
 # -----------------------------------------------------------------------------
