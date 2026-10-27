@@ -1,0 +1,53 @@
+---
+// Shows only the video thumbnail; the YouTube player is loaded on click.
+interface Props {
+    id: string;
+    title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<div class="not-prose my-8 aspect-video w-full overflow-hidden rounded-2xl bg-bondlio-charcoal">
+    <button
+        type="button"
+        class="youtube-embed group relative block w-full h-full cursor-pointer"
+        data-id={id}
+        data-title={title}
+        aria-label={`${title} - videoyu oynat`}
+    >
+        <img
+            src={`https://i.ytimg.com/vi_webp/${id}/sddefault.webp`}
+            alt={title}
+            width="640"
+            height="480"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover"
+        />
+        <span
+            class="absolute inset-0 m-auto flex items-center justify-center w-16 h-16 rounded-full bg-bondlio-orange text-white shadow-lg group-hover:scale-110 transition-transform duration-150"
+            aria-hidden="true"
+        >
+            <svg class="w-7 h-7 ml-1" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"></path>
+            </svg>
+        </span>
+    </button>
+</div>
+
+<script>
+    document.querySelectorAll<HTMLButtonElement>(".youtube-embed").forEach((button) => {
+        button.addEventListener("click", () => {
+            const iframe = document.createElement("iframe");
+            iframe.src = `https://www.youtube-nocookie.com/embed/${button.dataset.id}?autoplay=1`;
+            iframe.title = button.dataset.title ?? "";
+            iframe.allow =
+                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.referrerPolicy = "strict-origin-when-cross-origin";
+            iframe.allowFullscreen = true;
+            iframe.className = "w-full h-full";
+            button.replaceWith(iframe);
+        });
+    });
+</script>
