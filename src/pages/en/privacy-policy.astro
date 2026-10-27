@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+
+publishDate: "2025-01-15"
+modifiedDate: "2026-01-15"
+---
+
+<Layout
+    title="Privacy Policy | Bondlio"
+    description="Bondlio privacy policy and information on the protection of personal data."
+    currentPage="privacy"
+    canonical={Astro.url.href}
+>
+    <PageHeader
+        title="Privacy Policy"
+        description="Protecting your personal data matters to us."
+    />
+    <div class="page-content-container">
+        <p class="text-bondlio-gray">Content coming soon.</p>
+    </div>
+</Layout>

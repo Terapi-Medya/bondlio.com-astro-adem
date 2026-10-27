@@ -26,6 +26,12 @@ RewriteRule ^(?:en/infobook|tl/aklat-ng-kaalaman)/(filipinli-bakici|neden-filipi
 RewriteRule ^(?:bilgi-defteri|tl/aklat-ng-kaalaman)/(filipino-nanny-caregiver-salary-legal-process-in-turkey|hiring-filipino-caregivers-nanny-in-turkey|why-filipino-caregivers-are-preferred-so-popular)/?$ /en/infobook/$1/ [R=301,L]
 RewriteRule ^(?:bilgi-defteri|en/infobook)/(yaya-paghuka-in-turkey|pagkuha-ng-tagapag-alagang-pilipino-sa-turkey|bakit-mahalaga-ang-mga-yaya-pilipino)/?$ /tl/aklat-ng-kaalaman/$1/ [R=301,L]
 
+# Old hreflang targets of the privacy / terms pages
+RewriteRule ^en/privacy/?$ /en/privacy-policy/ [R=301,L]
+RewriteRule ^en/terms/?$ /en/terms-of-service/ [R=301,L]
+RewriteRule ^tl/privacy/?$ /tl/patakaran-sa-privacy/ [R=301,L]
+RewriteRule ^tl/terms/?$ /tl/mga-tuntunin-ng-paggamit/ [R=301,L]
+
 # Old site's English home page
 RewriteRule ^index-en\.html$ /en/ [R=301,L,NC]
 
