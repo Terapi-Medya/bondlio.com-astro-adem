@@ -20,6 +20,8 @@ interface Props {
 	modifiedDate?: string;
 	// Explicit hreflang URLs per language (e.g. blog posts with different slugs per language)
 	alternates?: Partial<Record<"tr" | "en" | "tl", string>>;
+	// true: arama motorlarına sayfayı indekslememesini söyler
+	noindex?: boolean;
 }
 
 const {
@@ -29,7 +31,8 @@ const {
 	currentPage,
 	canonical,
 	additionalSchema,
-	alternates
+	alternates,
+	noindex
 } = Astro.props;
 
 const currentLang = lang ?? Astro.currentLocale ?? "tr";
@@ -321,6 +324,7 @@ const hreflangUrls: Partial<Record<"tr" | "en" | "tl" | "x-default", string>> = 
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="google-site-verification" content="HAsRrWKqeZB2lNi9isHAjhuG-BkT0IyS_9kwKM4BPZE" />
+		{noindex && <meta name="robots" content="noindex, follow" />}
 		{canonical && <link rel="canonical" href={canonical} />}
 		<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 

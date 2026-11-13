@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog");
 const posts = allPosts
-    .filter((post) => post.data.lang === "en")
+    .filter((post) => post.data.lang === "en" && !post.data.unlisted)
     .sort(
         (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
     );

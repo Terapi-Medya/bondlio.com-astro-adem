@@ -9,7 +9,7 @@ import mdx from '@astrojs/mdx';
 // Simple frontmatter parser for .astro files (extracts key: value from YAML frontmatter block)
 /**
  * @param {string} content
- * @returns {{ publishDate?: string, modifiedDate?: string, lang?: string }}
+ * @returns {{ publishDate?: string, modifiedDate?: string, lang?: string, unlisted?: string }}
  */
 function parseAstroFrontmatter(content) {
   // Remove BOM if present
@@ -22,7 +22,7 @@ function parseAstroFrontmatter(content) {
   if (!match) return {};
   
   const frontmatter = match[1];
-  /** @type {{ publishDate?: string, modifiedDate?: string, lang?: string }} */
+  /** @type {{ publishDate?: string, modifiedDate?: string, lang?: string, unlisted?: string }} */
   const data = {};
   
   // Find all key: value patterns in the frontmatter (quoted or unquoted)
@@ -37,7 +37,7 @@ function parseAstroFrontmatter(content) {
       const key = match[1];
       // Group 2 = double-quoted, Group 3 = single-quoted, Group 4 = unquoted
       const value = match[2] ?? match[3] ?? match[4];
-      if (key === 'publishDate' || key === 'modifiedDate' || key === 'lang') {
+      if (key === 'publishDate' || key === 'modifiedDate' || key === 'lang' || key === 'unlisted') {
         data[key] = value;
       }
     }
@@ -45,6 +45,9 @@ function parseAstroFrontmatter(content) {
   
   return data;
 }
+
+/** @type {Set<string>} Blog posts with unlisted: true (left out of the sitemap) */
+const unlistedUrls = new Set();
 
 // Build lastmod map from frontmatter at build time
 async function buildLastmodMap() {
@@ -98,6 +101,12 @@ async function buildLastmodMap() {
       const slug = file.replace(/\\/g, '/').split('/').pop()?.replace('.mdx', '');
       const url = `https://bondlio.com${basePath}/${slug}/`;
       
+      // unlisted: true olan yazılar sitemap'e girmez
+      if (data.unlisted === 'true') {
+        unlistedUrls.add(url);
+        continue;
+      }
+
       // Use modifiedDate if available, otherwise publishDate
       const date = data.modifiedDate || data.publishDate;
       map.set(url, date);
@@ -126,6 +135,7 @@ export default defineConfig({
   },
 
   integrations: [mdx(), sitemap({
+    filter: (page) => !unlistedUrls.has(page),
     chunks: {
       all: (item) => item,
     },

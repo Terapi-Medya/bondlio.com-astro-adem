@@ -14,6 +14,8 @@ const blog = defineCollection({
         // Same value on every language version of a post (used for hreflang)
         translationKey: z.string().optional(),
         coverImage: image(),
+        // true: sayfa sadece linkle açılır (listelerde ve sitemap'te görünmez, noindex)
+        unlisted: z.boolean().optional(),
     }),
 });
 

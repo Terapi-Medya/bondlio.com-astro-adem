@@ -45,6 +45,7 @@ const articleSchema = {
     description={post.data.description}
     currentPage="infobook"
     canonical={Astro.url.href}
+    noindex={post.data.unlisted}
     alternates={alternates}
     publishDate={post.data.publishDate.toISOString().split("T")[0]}
     modifiedDate={post.data.modifiedDate
