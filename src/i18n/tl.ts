@@ -128,10 +128,10 @@ export const tl: Translation = {
     },
 
     contactInfo: {
-        phone: "+905067709596",
-        phoneDisplay: "+90 (506) 770 95 96 (Tagalog, English)",
-        whatsapp1: "905067709596",
-        whatsappDisplay1: "+90 (506) 770 95 96 (Tagalog, English)",
+        phone: "+639946645305",
+        phoneDisplay: "+63 994 664 5305 (Tagalog, English)",
+        whatsapp1: "639946645305",
+        whatsappDisplay1: "+63 994 664 5305 (Tagalog, English)",
         whatsapp2: "905331614377",
         whatsappDisplay2: "+90 (533) 161 43 77 (English)",
         whatsapp3: "905326499940",

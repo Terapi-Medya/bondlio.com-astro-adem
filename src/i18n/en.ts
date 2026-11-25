@@ -127,12 +127,12 @@ export const en: Translation = {
     },
 
     contactInfo: {
-        phone: "+905067709596",
-        phoneDisplay: "+90 (506) 770 95 96 (English)",
-        whatsapp1: "905067709596",
-        whatsappDisplay1: "+90 (506) 770 95 96 (English)",
-        whatsapp2: "905331614377",
-        whatsappDisplay2: "+90 (533) 161 43 77 (English, Türkçe)",
+        phone: "+905331614377",
+        phoneDisplay: "+90 533 161 43 77 (English)",
+        whatsapp1: "905331614377",
+        whatsappDisplay1: "+90 533 161 43 77 (English)",
+        whatsapp2: "639946645305",
+        whatsappDisplay2: "+63 994 664 5305 (English, Tagalog)",
         whatsapp3: "905326499940",
         whatsappDisplay3: "+90 (532) 649 99 40 (Türkçe)",
     },
