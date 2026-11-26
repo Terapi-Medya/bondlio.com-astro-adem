@@ -22,6 +22,12 @@ interface Props {
 	alternates?: Partial<Record<"tr" | "en" | "tl", string>>;
 	// true: arama motorlarına sayfayı indekslememesini söyler
 	noindex?: boolean;
+	// Paylaşım (Open Graph / Twitter) görseli; verilmezse /og-default.jpg kullanılır
+	image?: string;
+	imageWidth?: number;
+	imageHeight?: number;
+	imageAlt?: string;
+	ogType?: "website" | "article";
 }
 
 const {
@@ -32,13 +38,28 @@ const {
 	canonical,
 	additionalSchema,
 	alternates,
-	noindex
+	noindex,
+	publishDate,
+	modifiedDate,
+	image,
+	imageWidth,
+	imageHeight,
+	imageAlt,
+	ogType = "website"
 } = Astro.props;
 
 const currentLang = lang ?? Astro.currentLocale ?? "tr";
 
 const siteUrl = "https://bondlio.com";
 const pageUrl = (canonical ?? Astro.url.href).replace(/#.*$/, "");
+
+// Open Graph / Twitter paylaşım bilgileri
+const ogImage = new URL(image ?? "/og-default.jpg", siteUrl).href;
+const ogImageWidth = image ? imageWidth : 1200;
+const ogImageHeight = image ? imageHeight : 630;
+const ogImageAlt = imageAlt ?? title;
+const ogLocales: Record<string, string> = { tr: "tr_TR", en: "en_US", tl: "tl_PH" };
+const ogLocale = ogLocales[currentLang] ?? "tr_TR";
 
 const schema = {
 	"@context": "https://schema.org",
@@ -326,6 +347,25 @@ const hreflangUrls: Partial<Record<"tr" | "en" | "tl" | "x-default", string>> = 
 		<meta name="google-site-verification" content="HAsRrWKqeZB2lNi9isHAjhuG-BkT0IyS_9kwKM4BPZE" />
 		{noindex && <meta name="robots" content="noindex, follow" />}
 		{canonical && <link rel="canonical" href={canonical} />}
+
+		<!-- Open Graph / Twitter (paylaşım önizlemesi) -->
+		<meta property="og:type" content={ogType} />
+		<meta property="og:site_name" content="Bondlio" />
+		<meta property="og:locale" content={ogLocale} />
+		<meta property="og:url" content={pageUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		{ogImageWidth && <meta property="og:image:width" content={String(ogImageWidth)} />}
+		{ogImageHeight && <meta property="og:image:height" content={String(ogImageHeight)} />}
+		<meta property="og:image:alt" content={ogImageAlt} />
+		{ogType === "article" && publishDate && <meta property="article:published_time" content={publishDate} />}
+		{ogType === "article" && modifiedDate && <meta property="article:modified_time" content={modifiedDate} />}
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content={ogImageAlt} />
 		<script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
 
 		<!-- Hreflang tags for SEO -->

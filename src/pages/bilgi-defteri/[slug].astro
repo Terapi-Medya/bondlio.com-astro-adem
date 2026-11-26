@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
+import { getImage } from "astro:assets";
 
 export async function getStaticPaths() {
     const posts = await getCollection("blog");
@@ -22,6 +23,8 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const faqSchema = getFaqSchema(post, Astro.url.href);
 const alternates = await getBlogAlternates(post);
+// Paylaşım görseli: kapak görselinin JPG hali (WhatsApp/Facebook WebP'yi her zaman göstermiyor)
+const ogImage = await getImage({ src: post.data.coverImage, format: "jpg" });
 
 const articleSchema = {
     "@type": "Article",
@@ -46,6 +49,11 @@ const articleSchema = {
     currentPage="infobook"
     canonical={Astro.url.href}
     noindex={post.data.unlisted}
+    ogType="article"
+    image={ogImage.src}
+    imageWidth={post.data.coverImage.width}
+    imageHeight={post.data.coverImage.height}
+    imageAlt={post.data.title}
     alternates={alternates}
     publishDate={post.data.publishDate.toISOString().split("T")[0]}
     modifiedDate={post.data.modifiedDate
